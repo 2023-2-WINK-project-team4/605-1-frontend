@@ -1,4 +1,0 @@
-# .editorconfig
-[*]
-end_of_line = lf
-git commit -m "Add feat/option branch"
