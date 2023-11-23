@@ -1,5 +1,5 @@
 //import React, { useState, useEffect } from 'react';
-import '../../App.css';
+import '../../../App.css';
 import * as style from './styles.js';
 
 export default function MyProfile() {

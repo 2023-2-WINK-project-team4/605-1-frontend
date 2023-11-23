@@ -22,9 +22,9 @@ export const userInfoBox = styled.div`
 export const userInfoWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
-  padding: 40px 32px;
+  padding: 40px 13px;
   align-items: center;
-  gap: 34px;
+  gap: 90px;
 `;
 
 export const userInfo = styled.div`
