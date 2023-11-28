@@ -8,7 +8,7 @@ export default function Box(props) {
       height={props.height}
       borderColor={props.borderColor}
     >
-      <p>{props.content}</p>
+      <span>{props.content}</span>
     </style.Box>
   );
 }
