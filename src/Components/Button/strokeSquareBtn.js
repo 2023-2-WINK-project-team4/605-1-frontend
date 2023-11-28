@@ -1,7 +1,7 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { SmallStrokeSquareButton, BigStrokeSquareButton } from './styles';
 import { themeWink, themeFoscar } from '../Theme/theme';
-import { ThemeProvider } from 'styled-components';
 
 export default function StrokeSquareBtn(props) {
   return (

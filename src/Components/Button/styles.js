@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SmallFullButton = styled.button`
   width: 48px;
   height: 26px;
-  background: ${(props) => props.theme.color}; // theme
+  background: ${(props) => props.theme.color}; // theme color
   color: white;
   border: none;
   border-radius: 10px;
