@@ -8,8 +8,8 @@ export const SmallFullButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
 `;
 
 export const BigFullButton = styled.button`
@@ -20,8 +20,8 @@ export const BigFullButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
 `;
 
 export const StrokeButton = styled.button`
@@ -29,70 +29,65 @@ export const StrokeButton = styled.button`
   height: 26px;
   color: ${(props) => props.theme.color}; // theme
   background: white;
-  border: 1px;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
 `;
 
-export const SmallFullSqureButton = styled.button`
+export const SmallFullSquareButton = styled.button`
   width: 57px;
   height: 57px;
   background: ${(props) => props.theme.color};
-  border: 3px;
+  border-width: 3px;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
 `;
 
-export const BigFullSqureButton = styled.button`
+export const BigFullSquareButton = styled.button`
   width: 120px;
   height: 120px;
   background: ${(props) => props.theme.color};
   border: 5px;
   border-color: ${(props) => props.theme.color}; // theme
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
 `;
 
-export const SmallStrokeSqureButton = styled.button`
+export const SmallStrokeSquareButton = styled.button`
   width: 19px;
   height: 19px;
   background: white;
-  border: 1px;
-  border-color: #3a70ff; // theme
-  border-radius: 10px;
+  border-width: 1px;
+  border-color: ${(props) => props.theme.color}; // theme
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
 `;
 
-export const MiddleStrokeSqureButton = styled.button`
+export const MiddleStrokeSquareButton = styled.button`
   width: 57px;
   height: 57px;
   background: white;
-  border: 3px;
+  border-width: 3px;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
 `;
 
-export const BigStrokeSqureButton = styled.button`
+export const BigStrokeSquareButton = styled.button`
   width: 120px;
   height: 120px;
   background: white;
-  border: 5px;
+  border-width: 5px;
   border-color: ${(props) => props.theme.color}; // theme
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
+`;
+
+export const ImageForSquare = styled.img`
+  display: block;
+  width: 100%;
+  height: auto;
 `;

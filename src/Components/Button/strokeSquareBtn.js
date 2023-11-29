@@ -4,7 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import {
   SmallStrokeSquareButton,
   BigStrokeSquareButton,
-  MiddleStrokeSqureButton,
+  MiddleStrokeSquareButton,
+  ImageForSquare,
 } from './styles';
 import { themeWink, themeFoscar } from '../Theme/theme';
 
@@ -13,15 +14,21 @@ export default function StrokeSquareBtn(props) {
     <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
       {props.size === 'small' ? (
         <SmallStrokeSquareButton onClick={props.onClick}>
-          <img src={props.url} />
+          <ImageForSquare
+            src={require(`../../../public/Images/All/${props.image}.svg`)}
+          />
         </SmallStrokeSquareButton>
       ) : props.size === 'middle' ? (
-        <MiddleStrokeSqureButton onClick={props.onClick}>
-          <img src={props.url} />
-        </MiddleStrokeSqureButton>
+        <MiddleStrokeSquareButton onClick={props.onClick}>
+          <ImageForSquare
+            src={require(`../../../public/Images/All/${props.image}.svg`)}
+          />
+        </MiddleStrokeSquareButton>
       ) : (
         <BigStrokeSquareButton onClick={props.onClick}>
-          <img src={props.url} />
+          <ImageForSquare
+            src={require(`../../../public/Images/All/${props.image}.svg`)}
+          />
         </BigStrokeSquareButton>
       )}
     </ThemeProvider>
