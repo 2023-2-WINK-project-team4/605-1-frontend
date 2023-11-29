@@ -6,7 +6,7 @@ import { themeWink, themeFoscar } from '../Theme/theme';
 export default function StrokeBtn(props) {
   return (
     <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
-      <StrokeButton onClick={props.onClick}> {props.name} </StrokeButton>
+      <StrokeButton onClick={props.onClick}>{props.name}</StrokeButton>
     </ThemeProvider>
   );
 }

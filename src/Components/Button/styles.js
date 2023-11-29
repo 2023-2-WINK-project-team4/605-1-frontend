@@ -9,7 +9,7 @@ export const SmallFullButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 500;
 `;
 
 export const BigFullButton = styled.button`
@@ -21,7 +21,7 @@ export const BigFullButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
 `;
 
 export const StrokeButton = styled.button`
@@ -34,7 +34,7 @@ export const StrokeButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 500;
 `;
 
 export const SmallFullSqureButton = styled.button`
@@ -46,7 +46,7 @@ export const SmallFullSqureButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 500;
 `;
 
 export const BigFullSqureButton = styled.button`
@@ -58,10 +58,22 @@ export const BigFullSqureButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
 `;
 
 export const SmallStrokeSqureButton = styled.button`
+  width: 19px;
+  height: 19px;
+  background: white;
+  border: 1px;
+  border-color: #3a70ff; // theme
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+`;
+
+export const MiddleStrokeSqureButton = styled.button`
   width: 57px;
   height: 57px;
   background: white;
@@ -70,7 +82,7 @@ export const SmallStrokeSqureButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 500;
 `;
 
 export const BigStrokeSqureButton = styled.button`
@@ -82,5 +94,5 @@ export const BigStrokeSqureButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
 `;

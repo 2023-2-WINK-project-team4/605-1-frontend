@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { SmallFullSquareButton, BigFullSquareButton } from './styles';
@@ -8,11 +9,11 @@ export default function FullSquareBtn(props) {
     <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
       {props.size === 'small' ? (
         <SmallFullSquareButton onClick={props.onClick}>
-          {props.name}
+          <img src={props.url} />
         </SmallFullSquareButton>
       ) : (
         <BigFullSquareButton onClick={props.onClick}>
-          {props.name}
+          <img src={props.url} />
         </BigFullSquareButton>
       )}
     </ThemeProvider>

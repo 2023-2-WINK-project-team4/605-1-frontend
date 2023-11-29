@@ -5,5 +5,5 @@ export const themeWink = {
 
 export const themeFoscar = {
   // foscar 테마
-  color: '#35405A',
+  color: '#35405a',
 };

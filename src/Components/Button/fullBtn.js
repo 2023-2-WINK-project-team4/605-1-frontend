@@ -9,7 +9,7 @@ export default function FullBtn(props) {
       {props.size === 'small' ? (
         <SmallFullButton onClick={props.onClick}>{props.name}</SmallFullButton>
       ) : (
-        <BigFullButton onClick={props.onClick}> {props.name} </BigFullButton>
+        <BigFullButton onClick={props.onClick}>{props.name}</BigFullButton>
       )}
     </ThemeProvider>
   );
