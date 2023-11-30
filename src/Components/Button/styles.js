@@ -29,6 +29,7 @@ export const StrokeButton = styled.button`
   height: 26px;
   color: ${(props) => props.theme.color}; // theme
   background: white;
+  border: 3px solid;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 10px;
   cursor: pointer;
@@ -40,7 +41,7 @@ export const SmallFullSquareButton = styled.button`
   width: 57px;
   height: 57px;
   background: ${(props) => props.theme.color};
-  border-width: 3px;
+  border: 3px solid;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 10px;
   cursor: pointer;
@@ -50,7 +51,7 @@ export const BigFullSquareButton = styled.button`
   width: 120px;
   height: 120px;
   background: ${(props) => props.theme.color};
-  border: 5px;
+  border: 5px solid;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 30px;
   cursor: pointer;
@@ -60,7 +61,7 @@ export const SmallStrokeSquareButton = styled.button`
   width: 19px;
   height: 19px;
   background: white;
-  border-width: 1px;
+  border: 1px solid;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 5px;
   cursor: pointer;
@@ -70,7 +71,7 @@ export const MiddleStrokeSquareButton = styled.button`
   width: 57px;
   height: 57px;
   background: white;
-  border-width: 3px;
+  border: 3px solid;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 10px;
   cursor: pointer;
@@ -80,7 +81,7 @@ export const BigStrokeSquareButton = styled.button`
   width: 120px;
   height: 120px;
   background: white;
-  border-width: 5px;
+  border: 5px solid;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 30px;
   cursor: pointer;

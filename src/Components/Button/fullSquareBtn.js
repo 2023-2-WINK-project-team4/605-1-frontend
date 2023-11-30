@@ -13,15 +13,11 @@ export default function FullSquareBtn(props) {
     <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
       {props.size === 'small' ? (
         <SmallFullSquareButton onClick={props.onClick}>
-          <ImageForSquare
-            src={require(`../../../public/Images/All/${props.image}.svg`)}
-          />
+          <ImageForSquare src={props.url} />
         </SmallFullSquareButton>
       ) : (
         <BigFullSquareButton onClick={props.onClick}>
-          <ImageForSquare
-            src={require(`../../../public/Images/All/${props.image}.svg`)}
-          />
+          <ImageForSquare src={props.url} />
         </BigFullSquareButton>
       )}
     </ThemeProvider>

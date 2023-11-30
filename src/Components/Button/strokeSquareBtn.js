@@ -14,21 +14,15 @@ export default function StrokeSquareBtn(props) {
     <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
       {props.size === 'small' ? (
         <SmallStrokeSquareButton onClick={props.onClick}>
-          <ImageForSquare
-            src={require(`../../../public/Images/All/${props.image}.svg`)}
-          />
+          <ImageForSquare src={props.url} />
         </SmallStrokeSquareButton>
       ) : props.size === 'middle' ? (
         <MiddleStrokeSquareButton onClick={props.onClick}>
-          <ImageForSquare
-            src={require(`../../../public/Images/All/${props.image}.svg`)}
-          />
+          <ImageForSquare src={props.url} />
         </MiddleStrokeSquareButton>
       ) : (
         <BigStrokeSquareButton onClick={props.onClick}>
-          <ImageForSquare
-            src={require(`../../../public/Images/All/${props.image}.svg`)}
-          />
+          <ImageForSquare src={props.url} />
         </BigStrokeSquareButton>
       )}
     </ThemeProvider>
