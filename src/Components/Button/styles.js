@@ -9,7 +9,7 @@ export const SmallFullButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
 `;
 
 export const BigFullButton = styled.button`
@@ -21,7 +21,7 @@ export const BigFullButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 `;
 
 export const StrokeButton = styled.button`
@@ -34,7 +34,7 @@ export const StrokeButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
 `;
 
 export const SmallFullSquareButton = styled.button`
