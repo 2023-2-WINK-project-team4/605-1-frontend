@@ -37,7 +37,7 @@ export default function MyProfile() {
             </style.userInfo>
           </style.userInfoBox>
         </style.userInfoWrapper>
-        <FullBtn size="small" club="wink" name="확인" />
+        <FullBtn size="big" club="wink" name="프로필 수정하기" />
       </style.userInfoContainer>
 
       {/* </style.profileBox> */}

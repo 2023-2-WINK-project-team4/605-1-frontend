@@ -11,12 +11,12 @@ export const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 101;
 `;
 
 export const ModalContent = styled.div`
   background: white;
-  border: 2px solid #3a70ff; // 파란색 테두리, 2px 크기
+  border: 2px solid #3a70ff;
   padding: 35px 35px;
   border-radius: 15px;
   max-width: 80%;
@@ -25,8 +25,19 @@ export const ModalContent = styled.div`
   position: relative;
 `;
 
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+`;
+
 export const ModalFooter = styled.div`
   margin-top: 20px;
 `;
-
 // Other styles...

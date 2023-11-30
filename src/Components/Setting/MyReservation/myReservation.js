@@ -1,6 +1,5 @@
-// myReservation.js
-import React, { useState } from 'react';
-import { SeatModal } from '../../Modal/SeatModal/seatModal'; // Use {} for named imports
+import React, { useState, useEffect } from 'react';
+import SeatModal from '../../Modal/SeatModal/seatModal';
 import * as style from './styles.js';
 
 const MyReservationInfo = {
@@ -20,16 +19,35 @@ export default function MyReservation() {
     setIsModalOpen(false);
   };
 
+  // 모달 창 외부를 클릭했을 때 모달 창이 닫히도록 이벤트 리스너 추가
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (isModalOpen && !event.target.closest('.ModalContainer')) {
+        handleCloseModal();
+      }
+    };
+
+    window.addEventListener('click', handleOutsideClick);
+
+    // 컴포넌트가 언마운트되면 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [isModalOpen]);
+
+  // MyReservation 컴포넌트의 return 구문 수정
   return (
     <>
-      <SeatModal
-        isOpen={isModalOpen}
-        closeModal={handleCloseModal}
-        myReservationInfo={MyReservationInfo}
-      />
+      {isModalOpen && (
+        <SeatModal
+          isOpen={isModalOpen}
+          closeModal={handleCloseModal}
+          myReservationInfo={MyReservationInfo}
+        />
+      )}
       <style.myReservationContainer>
         <style.title>나의 예약</style.title>
-        <div className="return box" onClick={handleOpenModal}>
+        <div className="returnBox" onClick={handleOpenModal}>
           <style.myReservationWrapper>
             <style.chairIcon>
               <img
