@@ -11,11 +11,10 @@ export default function SeatModal({ isOpen, closeModal, myReservationInfo }) {
       <style.ModalContent>
         <style.ModalCloseButton onClick={closeModal}>X</style.ModalCloseButton>
         <p>{myReservationInfo.seatNumber}번 좌석을 반납하시겠습니까?</p>
-        {/* FullBtn 컴포넌트를 사용하여 예, 아니오 버튼 스타일링 */}
-        <div>
-          <FullBtn size="small" name="확인" onClick={closeModal} />
-          <FullBtn size="small" name="취소" onClick={closeModal} />
-        </div>
+        <style.ButtonBox>
+          <FullBtn size="small" name="확인" clup="wink" onClick={closeModal} />
+          <FullBtn size="small" name="취소" clup="wink" onClick={closeModal} />
+        </style.ButtonBox>
       </style.ModalContent>
     </style.ModalContainer>
   );

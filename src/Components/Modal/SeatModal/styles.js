@@ -40,4 +40,11 @@ export const ModalCloseButton = styled.button`
 export const ModalFooter = styled.div`
   margin-top: 20px;
 `;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+`;
 // Other styles...
