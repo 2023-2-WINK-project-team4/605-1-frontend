@@ -5,6 +5,7 @@ export const Box = styled.div`
   height: ${(props) => props.height};
   border: 3px solid ${(props) => props.borderColor};
   border-radius: 10px;
+  font-weight: ${(props) => props.fontWeight};
 `;
 
 export const TitleBoxCom = styled.div`
