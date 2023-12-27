@@ -6,6 +6,9 @@ export const Box = styled.div`
   border: 3px solid ${(props) => props.borderColor};
   border-radius: 10px;
   font-weight: ${(props) => props.fontWeight};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TitleBoxCom = styled.div`
