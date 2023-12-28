@@ -5,10 +5,19 @@ export const Box = styled.div`
   height: ${(props) => props.height};
   border: 3px solid ${(props) => props.borderColor};
   border-radius: 10px;
-  font-weight: ${(props) => props.fontWeight};
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const BoxTitle = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+export const BoxContent = styled.div`
+  font-size: 16px;
+  font-weight: normal;
 `;
 
 export const TitleBoxCom = styled.div`
