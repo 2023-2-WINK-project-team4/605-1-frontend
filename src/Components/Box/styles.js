@@ -12,12 +12,12 @@ export const Box = styled.div`
 
 export const BoxTitle = styled.div`
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 700;
 `;
 
 export const BoxContent = styled.div`
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 400;
 `;
 
 export const TitleBoxCom = styled.div`
