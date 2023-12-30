@@ -16,7 +16,7 @@ export const ModalContainer = styled.div`
 
 export const ModalContent = styled.div`
   background: white;
-  border: 2px solid #3a70ff;
+  border: 2px solid ${(props) => props.theme.color}; // !!!!!!!
   padding: 35px 35px;
   border-radius: 15px;
   max-width: 80%;

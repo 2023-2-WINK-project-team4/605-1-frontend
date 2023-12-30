@@ -1,7 +1,7 @@
 // MyReservation.js
 import React, { useState, useEffect } from 'react';
-import SeatModal from '../../Modal/SeatModal/seatModal';
 import * as style from './styles.js';
+import SeatModal from '../../Modal/SeatModal/seatModal.js';
 
 const MyReservationInfo = {
   seatNumber: 7,
@@ -40,6 +40,7 @@ export default function MyReservation() {
   return (
     <>
       <SeatModal
+        club="wink"
         isOpen={isModalOpen}
         closeModal={handleCloseModal}
         myReservationInfo={MyReservationInfo}
