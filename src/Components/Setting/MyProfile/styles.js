@@ -30,9 +30,8 @@ export const userInfoContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  //padding: 40px 13px;
+
   align-items: center;
-  //gap: 90px;
 `;
 export const userInfo = styled.div`
   font-size: 16px;
@@ -42,7 +41,3 @@ export const userInfo = styled.div`
     margin-right: 10px;
   }
 `;
-
-// export const profileBox = styled.div`
-
-// `;

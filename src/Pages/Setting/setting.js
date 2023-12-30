@@ -1,5 +1,3 @@
-//레이아웃 너비는 최대 480픽셀 , 높이는 디바이스 높이의 100%
-
 import Header from '../../Components/Header/header';
 import Footer from '../../Components/Footer/footer';
 import MyProfile from '../../Components/Setting/MyProfile/myProfile.js';

@@ -1,4 +1,3 @@
-//import React, { useState, useEffect } from 'react';
 import '../../../App.css';
 import * as style from './styles.js';
 import FullBtn from '../../Button/fullBtn.js';
@@ -7,7 +6,7 @@ export default function MyProfile() {
   const userInfo = {
     name: '유건',
     studentId: 20203103,
-    club: 'WINK',
+    club: 'wink',
     profile:
       'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
     kakaoId: '카카오아이디',
@@ -15,7 +14,6 @@ export default function MyProfile() {
 
   return (
     <>
-      {/* <style.profileBox> */}
       <style.title>나의 프로필</style.title>
       <style.userInfoContainer>
         <style.userInfoWrapper>
@@ -39,8 +37,6 @@ export default function MyProfile() {
         </style.userInfoWrapper>
         <FullBtn size="big" club="wink" name="프로필 수정하기" />
       </style.userInfoContainer>
-
-      {/* </style.profileBox> */}
     </>
   );
 }

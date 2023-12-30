@@ -1,7 +1,6 @@
-// seatModal.js
 import React from 'react';
 import * as style from './styles.js';
-import FullBtn from '../../Button/fullBtn'; // fullBtn 컴포넌트 불러오기
+import FullBtn from '../../Button/fullBtn';
 import { themeWink, themeFoscar } from '../../Theme/theme';
 
 export default function SeatModal({
@@ -18,8 +17,8 @@ export default function SeatModal({
         <style.ModalCloseButton onClick={closeModal}>X</style.ModalCloseButton>
         <p>{myReservationInfo.seatNumber}번 좌석을 반납하시겠습니까?</p>
         <style.ButtonBox>
-          <FullBtn size="small" name="확인" club="wink" onClick={closeModal} />
-          <FullBtn size="small" name="취소" club="wink" onClick={closeModal} />
+          <FullBtn size="small" name="확인" club={club} onClick={closeModal} />
+          <FullBtn size="small" name="취소" club={club} onClick={closeModal} />
         </style.ButtonBox>
       </style.ModalContent>
     </style.ModalContainer>
