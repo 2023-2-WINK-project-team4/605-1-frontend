@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as style from './styles.js';
 import SeatModal from '../../Modal/SeatModal/seatModal.js';
 
@@ -10,12 +10,12 @@ const MyReservationInfo = {
 
 export default function MyReservation() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
+    console.log('called');
     setIsModalOpen(false);
   };
 

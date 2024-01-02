@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+export const ModalWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 101;
+`;
+
 export const ModalContainer = styled.div`
   display: flex;
   align-items: center;
@@ -9,7 +22,7 @@ export const ModalContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 101;
 `;
 
@@ -22,6 +35,7 @@ export const ModalContent = styled.div`
   max-height: 80%;
   overflow: auto;
   position: relative;
+  z-index: 110;
 `;
 
 export const ModalCloseButton = styled.button`
