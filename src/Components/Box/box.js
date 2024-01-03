@@ -8,7 +8,20 @@ export default function Box(props) {
       height={props.height}
       borderColor={props.borderColor}
     >
-      <span>{props.content}</span>
+      {props.title ? (
+        <div>
+          <style.BoxTitle>
+            <span>{props.title}</span>
+          </style.BoxTitle>
+          <style.BoxContent>
+            <span>{props.content}</span>
+          </style.BoxContent>
+        </div>
+      ) : (
+        <style.BoxContent>
+          <span>{props.content}</span>
+        </style.BoxContent>
+      )}
     </style.Box>
   );
 }
