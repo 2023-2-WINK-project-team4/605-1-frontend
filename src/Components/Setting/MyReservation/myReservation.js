@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import * as style from './styles.js';
 import SeatModal from '../../Modal/SeatModal/seatModal.js';
 
 const MyReservationInfo = {
-  seatNumber: 7,
+  seatNumber: 4,
   seatStatus: 'using',
   startTime: '2023-11-14T13:41:23.521Z',
 };

@@ -8,17 +8,23 @@ export default function SeatModal({
   closeModal,
   myReservationInfo,
   club,
-  ref,
+  tryToSeat,
 }) {
   return (
     isOpen && (
       <style.ModalWrapper>
-        <style.ModalContainer ref={ref} onClick={closeModal} />
+        <style.ModalContainer onClick={closeModal} />
         <style.ModalContent theme={club === 'wink' ? themeWink : themeFoscar}>
           <style.ModalCloseButton onClick={closeModal}>
             X
           </style.ModalCloseButton>
-          <p>{myReservationInfo.seatNumber}번 좌석을 반납하시겠습니까?</p>
+          <div>
+            {myReservationInfo.seatNumber !== 0 ? (
+              <p>{myReservationInfo.seatNumber}번 좌석을 반납하시겠습니까?</p>
+            ) : (
+              <p>{tryToSeat}번 좌석을 배정하시겠습니까?</p>
+            )}
+          </div>
           <style.ButtonBox>
             <FullBtn
               size="small"
