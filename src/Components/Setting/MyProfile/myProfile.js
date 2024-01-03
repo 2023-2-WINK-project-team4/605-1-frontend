@@ -1,6 +1,7 @@
 import '../../../App.css';
 import * as style from './styles.js';
 import FullBtn from '../../Button/fullBtn.js';
+import { useNavigate } from 'react-router-dom';
 
 export default function MyProfile() {
   const userInfo = {
@@ -10,6 +11,10 @@ export default function MyProfile() {
     profile:
       'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
     kakaoId: '카카오아이디',
+  };
+  const navigate = useNavigate();
+  const goToProfileEdit = () => {
+    navigate('/profileEdit');
   };
 
   return (
@@ -35,7 +40,12 @@ export default function MyProfile() {
             </style.userInfo>
           </style.userInfoBox>
         </style.userInfoWrapper>
-        <FullBtn size="big" club="wink" name="프로필 수정하기" />
+        <FullBtn
+          size="big"
+          club="wink"
+          name="프로필 수정하기"
+          onClick={goToProfileEdit}
+        />
       </style.userInfoContainer>
     </>
   );
