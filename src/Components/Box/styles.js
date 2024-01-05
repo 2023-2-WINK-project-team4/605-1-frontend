@@ -18,6 +18,9 @@ export const BoxTitle = styled.div`
 export const BoxContent = styled.div`
   font-size: 16px;
   font-weight: 400;
+  img {
+    margin-right: 40px;
+  }
 `;
 
 export const TitleBoxCom = styled.div`
