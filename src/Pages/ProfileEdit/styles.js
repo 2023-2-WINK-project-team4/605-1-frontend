@@ -1,3 +1,4 @@
+// styles.js
 import styled from 'styled-components';
 
 export const ProfileEditContainer = styled.div`
@@ -5,12 +6,10 @@ export const ProfileEditContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 75px 21px;
-  position: relative;
+  padding: 75px 0px 21px;
 `;
 
-export const userProfile = styled.div`
-  flex: 1;
+export const UserProfile = styled.div`
   position: relative;
 
   > img {
@@ -22,6 +21,26 @@ export const userProfile = styled.div`
 
 export const EditButton = styled.div`
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 8px;
+  right: 8px;
+`;
+
+export const EditLabel = styled.label`
+  cursor: pointer;
+`;
+
+export const EditInput = styled.input`
+  display: none;
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  :first-child {
+    font-size: 16px;
+    font-weight: 800;
+    margin-right: 10px;
+  }
 `;

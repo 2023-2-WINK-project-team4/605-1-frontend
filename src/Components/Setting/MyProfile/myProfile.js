@@ -14,7 +14,7 @@ export default function MyProfile() {
   };
   const navigate = useNavigate();
   const goToProfileEdit = () => {
-    navigate('/profileEdit');
+    navigate('/profileEdit', { state: { userInfo } });
   };
 
   return (
@@ -42,7 +42,7 @@ export default function MyProfile() {
         </style.userInfoWrapper>
         <FullBtn
           size="big"
-          club="wink"
+          club={userInfo.club}
           name="프로필 수정하기"
           onClick={goToProfileEdit}
         />
