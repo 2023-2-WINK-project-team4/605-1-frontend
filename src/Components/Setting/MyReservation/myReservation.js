@@ -3,13 +3,12 @@ import * as style from './styles';
 import SeatModal from '../../Modal/SeatModal/seatModal';
 import StrokeSquareBtn from '../../Button/strokeSquareBtn';
 
-const MyReservationInfo = {
-  seatNumber: 4,
-  seatStatus: 'using',
-  startTime: '2023-11-14T13:41:23.521Z',
-};
-
 export default function MyReservation() {
+  const MyReservationInfo = {
+    seatNumber: 4,
+    seatStatus: 'using',
+    startTime: '2023-11-14T13:41:23.521Z',
+  };
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOpenModal = () => {
     setIsModalOpen(true);

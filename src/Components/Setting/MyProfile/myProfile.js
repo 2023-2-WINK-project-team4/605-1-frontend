@@ -1,4 +1,4 @@
-import '../../../App.css';
+import React from 'react';
 import * as style from './styles';
 import FullBtn from '../../Button/fullBtn';
 import { useNavigate } from 'react-router-dom';
@@ -13,9 +13,6 @@ export default function MyProfile() {
     kakaoId: '카카오아이디',
   };
   const navigate = useNavigate();
-  const goToProfileEdit = () => {
-    navigate('/profileEdit', { state: { userInfo } });
-  };
 
   return (
     <>
@@ -44,7 +41,9 @@ export default function MyProfile() {
           size="big"
           club={userInfo.club}
           name="프로필 수정하기"
-          onClick={goToProfileEdit}
+          onClick={() => {
+            navigate('/profileEdit', { state: { userInfo } });
+          }}
         />
       </style.userInfoContainer>
     </>

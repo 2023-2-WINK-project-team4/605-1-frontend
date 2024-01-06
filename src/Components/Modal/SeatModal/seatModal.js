@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from 'react';
 import * as style from './styles';
 import FullBtn from '../../Button/fullBtn';
 import { themeWink, themeFoscar } from '../../Theme/theme';

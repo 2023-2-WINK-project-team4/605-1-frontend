@@ -5,11 +5,9 @@ import * as style from './styles';
 import { useLocation } from 'react-router-dom';
 import Input from '../../Components/Input/input';
 import FullBtn from '../../Components/Button/fullBtn';
-import StrokeSquareBtn from '../../Components/Button/strokeSquareBtn';
 
 export default function ProfileEdit() {
   const title = '프로필 수정';
-  const FooterTitle = '설정';
   const location = useLocation();
   const userInfo = location.state.userInfo;
 
@@ -69,7 +67,7 @@ export default function ProfileEdit() {
           onClick={() => setRealImage(tempImage)}
         />
       </style.ProfileEditContainer>
-      <Footer title={FooterTitle} />
+      <Footer title={title} />
     </>
   );
 }
