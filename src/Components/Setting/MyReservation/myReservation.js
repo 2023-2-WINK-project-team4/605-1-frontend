@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import * as style from './styles.js';
-import SeatModal from '../../Modal/SeatModal/seatModal.js';
+import * as style from './styles';
+import SeatModal from '../../Modal/SeatModal/seatModal';
+import StrokeSquareBtn from '../../Button/strokeSquareBtn';
 
 const MyReservationInfo = {
   seatNumber: 4,
@@ -15,7 +16,6 @@ export default function MyReservation() {
   };
 
   const handleCloseModal = () => {
-    console.log('called');
     setIsModalOpen(false);
   };
 
@@ -31,12 +31,11 @@ export default function MyReservation() {
         <style.title>나의 예약</style.title>
         <div className="return box" onClick={handleOpenModal}>
           <style.myReservationWrapper>
-            <style.chairIcon>
-              <img
-                src={process.env.PUBLIC_URL + '/Images/All/chairWink.svg'}
-                alt="일반좌석 아이콘"
-              />
-            </style.chairIcon>
+            <StrokeSquareBtn
+              size="middle"
+              club="wink"
+              url={process.env.PUBLIC_URL + '/Images/All/winkSeatIcon.svg'}
+            />
             <style.seatInfo>
               {MyReservationInfo.seatNumber}번 좌석 사용중
             </style.seatInfo>

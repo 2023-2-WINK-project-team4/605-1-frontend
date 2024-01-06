@@ -1,5 +1,5 @@
 import '../../../App.css';
-import * as style from './styles.js';
+import * as style from './styles';
 import FullBtn from '../../Button/fullBtn';
 import { useNavigate } from 'react-router-dom';
 

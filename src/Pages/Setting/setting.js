@@ -1,8 +1,8 @@
 import Header from '../../Components/Header/header';
 import Footer from '../../Components/Footer/footer';
-import MyProfile from '../../Components/Setting/MyProfile/myProfile.js';
-import MyReservation from '../../Components/Setting/MyReservation/myReservation.js';
-import * as style from './styles.js';
+import MyProfile from '../../Components/Setting/MyProfile/myProfile';
+import MyReservation from '../../Components/Setting/MyReservation/myReservation';
+import * as style from './styles';
 
 export default function Setting() {
   const title = '설정';
