@@ -1,13 +1,13 @@
-// profileEdit.js
 import React, { useState } from 'react';
 import Header from '../../Components/Header/header';
 import Footer from '../../Components/Footer/footer';
 import * as style from './styles.js';
 import { useLocation } from 'react-router-dom';
-import Input from '../../Components/Input/input.js';
-import FullBtn from '../../Components/Button/fullBtn.js';
+import Input from '../../Components/Input/input';
+import FullBtn from '../../Components/Button/fullBtn';
+import StrokeSquareBtn from '../../Components/Button/strokeSquareBtn.js';
 
-const ProfileEdit = () => {
+export default function ProfileEdit() {
   const title = '프로필 수정';
   const FooterTitle = '설정';
   const location = useLocation();
@@ -31,6 +31,7 @@ const ProfileEdit = () => {
   return (
     <>
       <Header title={title} />
+      <StrokeSquareBtn size="middle" club="wink"></StrokeSquareBtn>
       <style.ProfileEditContainer>
         <style.UserProfile>
           <img src={tempImage} alt="프로필 사진" className="image-bottom" />
@@ -72,6 +73,4 @@ const ProfileEdit = () => {
       <Footer title={FooterTitle} />
     </>
   );
-};
-
-export default ProfileEdit;
+}

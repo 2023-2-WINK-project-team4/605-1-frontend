@@ -1,6 +1,6 @@
 import '../../../App.css';
 import * as style from './styles.js';
-import FullBtn from '../../Button/fullBtn.js';
+import FullBtn from '../../Button/fullBtn';
 import { useNavigate } from 'react-router-dom';
 
 export default function MyProfile() {
