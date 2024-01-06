@@ -1,8 +1,8 @@
 import Login from './Pages/Login/login';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
-import Setting from './Pages/Setting/setting';
 import ProfileEdit from './Pages/ProfileEdit/profileEdit';
+import Setting from './Pages/Setting/setting';
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (

@@ -52,11 +52,12 @@ export default function ProfileEdit() {
         <div>
           <span>이름</span>
           <Input
-            type={'wink'}
+            type={'text'}
             width={'200px'}
             height={'20px'}
             marginBottom={'10px'}
             marginLeft={'30px'}
+            placeholder={userInfo.name}
           ></Input>
           <br></br>
         </div>

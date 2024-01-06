@@ -1,5 +1,6 @@
 import * as style from './styles';
 import FullBtn from '../../Button/fullBtn';
+import React from 'react';
 import { themeWink, themeFoscar } from '../../Theme/theme';
 
 export default function SeatModal({
