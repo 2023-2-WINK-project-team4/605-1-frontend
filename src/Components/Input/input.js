@@ -12,6 +12,11 @@ export default function Input(props) {
             height={props.height}
             marginBottom={props.marginBottom}
             marginLeft={props.marginLeft}
+            onClick={props.onClick}
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+            value={props.value}
+            onKeyDown={props.onKeyDown ? (e) => props.onKeyDown(e) : undefined}
           />
         </div>
       ) : (
@@ -23,6 +28,11 @@ export default function Input(props) {
             height={props.height}
             marginBottom={props.marginBottom}
             marginLeft={props.marginLeft}
+            onClick={props.onClick}
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+            value={props.value}
+            onKeyDown={props.onKeyDown ? (e) => props.onKeyDown(e) : undefined}
           />
         </label>
       )}
