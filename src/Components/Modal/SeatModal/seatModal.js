@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import * as style from './styles.js';
+import * as style from './styles';
 import FullBtn from '../../Button/fullBtn';
+import React from 'react';
 import { themeWink, themeFoscar } from '../../Theme/theme';
 
 export default function SeatModal({
