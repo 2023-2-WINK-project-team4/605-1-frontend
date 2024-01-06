@@ -8,20 +8,34 @@ export default function Box(props) {
       height={props.height}
       borderColor={props.borderColor}
     >
-      {props.title ? (
-        <div>
+      {props.pageName === 'profile' ? (
+        <>
           <style.BoxTitle>
-            <span>{props.title}</span>
-          </style.BoxTitle>
-          <style.BoxContent>
             <span>{props.content}</span>
-          </style.BoxContent>
-        </div>
-      ) : (
+          </style.BoxTitle>
+        </>
+      ) : props.pageName === 'main' ? (
         <style.BoxContent>
+          <img src={props.src} alt="chair-icon" />
           <span>{props.content}</span>
         </style.BoxContent>
-      )}
+      ) : props.pageName === 'regularSeat' ? (
+        <div>
+          <style.BoxTitle>
+            <span>{props.title1}</span>
+          </style.BoxTitle>
+          <style.BoxContent>
+            <span>{props.content1}</span>
+          </style.BoxContent>
+          <br />
+          <style.BoxTitle>
+            <span>{props.title2}</span>
+          </style.BoxTitle>
+          <style.BoxContent>
+            <span>{props.content2}</span>
+          </style.BoxContent>
+        </div>
+      ) : null}
     </style.Box>
   );
 }

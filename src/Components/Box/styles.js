@@ -8,16 +8,24 @@ export const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 8px;
 `;
 
 export const BoxTitle = styled.div`
   font-size: 16px;
   font-weight: 700;
+  white-space: pre-line;
 `;
 
 export const BoxContent = styled.div`
   font-size: 16px;
   font-weight: 400;
+  img {
+    margin-right: 40px;
+  }
+  white-space: pre-line;
+  display: flex;
+  align-items: center;
 `;
 
 export const TitleBoxCom = styled.div`
