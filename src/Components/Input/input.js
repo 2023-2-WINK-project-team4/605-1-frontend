@@ -12,7 +12,6 @@ export default function Input(props) {
             height={props.height}
             marginBottom={props.marginBottom}
             marginLeft={props.marginLeft}
-            name={props.name}
             onClick={props.onClick}
             placeholder={props.placeholder}
             onChange={props.onChange}
@@ -29,7 +28,6 @@ export default function Input(props) {
             height={props.height}
             marginBottom={props.marginBottom}
             marginLeft={props.marginLeft}
-            name={props.name}
             onClick={props.onClick}
             placeholder={props.placeholder}
             onChange={props.onChange}
