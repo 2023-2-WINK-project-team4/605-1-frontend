@@ -10,7 +10,7 @@ export const Footer = styled.div`
   background-color: #ffffff;
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid #f1f1f5;
 `;
 
