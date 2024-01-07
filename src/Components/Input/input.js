@@ -20,7 +20,7 @@ export default function Input(props) {
           />
         </div>
       ) : (
-        <label>
+        <div>
           <span>{props.content}</span>
           <style.Input
             type={props.type}
@@ -34,7 +34,7 @@ export default function Input(props) {
             value={props.value}
             onKeyDown={props.onKeyDown ? (e) => props.onKeyDown(e) : undefined}
           />
-        </label>
+        </div>
       )}
     </>
   );
