@@ -13,6 +13,8 @@ export default function ProfileEdit() {
 
   const [realImage, setRealImage] = useState(userInfo.profile);
   const [tempImage, setTempImage] = useState(realImage);
+  const [realName, setRealName] = useState(userInfo.name);
+  const [tempName, setTempName] = useState(realName);
 
   const handleImageChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -31,13 +33,12 @@ export default function ProfileEdit() {
       <Header title={title} />
       <style.ProfileEditContainer>
         <style.UserProfile>
-          <img src={tempImage} alt="프로필 사진" className="image-bottom" />
+          <img src={tempImage} alt="프로필 사진" />
           <style.EditButton>
             <style.EditLabel htmlFor="imageUpload">
               <img
                 src={process.env.PUBLIC_URL + '/Images/All/pencil.svg'}
                 alt="프로필 수정 버튼"
-                className="image-top"
               />
             </style.EditLabel>
             <style.EditInput
@@ -50,14 +51,15 @@ export default function ProfileEdit() {
         </style.UserProfile>
 
         <div>
-          <span>이름</span>
           <Input
+            content={'이름'}
             type={'text'}
             width={'200px'}
             height={'20px'}
             marginBottom={'10px'}
             marginLeft={'30px'}
-            placeholder={userInfo.name}
+            placeholder={realName}
+            onChange={(value) => setTempName(value)}
           ></Input>
           <br></br>
         </div>
@@ -65,7 +67,10 @@ export default function ProfileEdit() {
           size="big"
           club={userInfo.club}
           name="확인"
-          onClick={() => setRealImage(tempImage)}
+          onClick={() => {
+            setRealImage(tempImage);
+            setRealName(tempName);
+          }}
         />
       </style.ProfileEditContainer>
       <Footer title={title} />
