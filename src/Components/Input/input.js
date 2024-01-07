@@ -5,7 +5,7 @@ export default function Input(props) {
   return (
     <>
       {props.isModal ? (
-        <div>
+        <style.Container>
           <style.Input
             type={props.type}
             width={props.width}
@@ -18,9 +18,9 @@ export default function Input(props) {
             value={props.value}
             onKeyDown={props.onKeyDown ? (e) => props.onKeyDown(e) : undefined}
           />
-        </div>
+        </style.Container>
       ) : (
-        <div>
+        <style.Container>
           <span>{props.content}</span>
           <style.Input
             type={props.type}
@@ -34,7 +34,7 @@ export default function Input(props) {
             value={props.value}
             onKeyDown={props.onKeyDown ? (e) => props.onKeyDown(e) : undefined}
           />
-        </div>
+        </style.Container>
       )}
     </>
   );
