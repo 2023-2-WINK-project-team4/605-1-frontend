@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  > span {
+    font-weight: 800;
+  }
+`;
+
 export const Input = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
@@ -8,11 +16,4 @@ export const Input = styled.input`
   margin-bottom: ${(props) => props.marginBottom};
   margin-left: ${(props) => props.marginLeft};
   padding: 7px 10px;
-  > div {
-    display: flex;
-    justify-content: center;
-  }
-  > span {
-    font-weight: 800;
-  }
 `;
