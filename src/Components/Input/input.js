@@ -7,11 +7,8 @@ export default function Input(props) {
       {props.isModal ? (
         <style.Container>
           <style.Input
-            type={props.type}
             width={props.width}
             height={props.height}
-            marginBottom={props.marginBottom}
-            marginLeft={props.marginLeft}
             onClick={props.onClick}
             placeholder={props.placeholder}
             onChange={props.onChange}
@@ -23,11 +20,8 @@ export default function Input(props) {
         <style.Container>
           <span>{props.content}</span>
           <style.Input
-            type={props.type}
             width={props.width}
             height={props.height}
-            marginBottom={props.marginBottom}
-            marginLeft={props.marginLeft}
             onClick={props.onClick}
             placeholder={props.placeholder}
             onChange={props.onChange}
