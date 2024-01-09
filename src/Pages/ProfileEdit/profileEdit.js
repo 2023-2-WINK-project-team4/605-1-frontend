@@ -60,7 +60,7 @@ export default function ProfileEdit() {
             marginLeft={'30px'}
             placeholder={realName}
             onChange={(value) => setTempName(value)}
-          ></Input>
+          />
           <br></br>
         </div>
         <FullBtn
