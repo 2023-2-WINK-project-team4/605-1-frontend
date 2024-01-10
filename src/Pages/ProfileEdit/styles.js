@@ -10,7 +10,6 @@ export const ProfileEditContainer = styled.div`
 
 export const UserProfile = styled.div`
   position: relative;
-
   > img {
     width: 120px;
     height: 120px;
@@ -42,4 +41,12 @@ export const UserInfo = styled.div`
     font-weight: 800;
     margin-right: 10px;
   }
+`;
+export const InputWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 100px 0px 70px 0px;
 `;

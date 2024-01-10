@@ -15,6 +15,8 @@ export default function ProfileEdit() {
   const [tempImage, setTempImage] = useState(realImage);
   const [realName, setRealName] = useState(userInfo.name);
   const [tempName, setTempName] = useState(realName);
+  const [realStudentId, setRealStudentId] = useState(userInfo.studentId);
+  const [tempStudentId, setTempStudentId] = useState(realStudentId);
 
   const handleImageChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -50,19 +52,25 @@ export default function ProfileEdit() {
           </style.EditButton>
         </style.UserProfile>
 
-        <div>
+        <style.InputWrapper>
           <Input
             content={'이름'}
             type={'text'}
-            width={'200px'}
-            height={'20px'}
-            marginBottom={'10px'}
-            marginLeft={'30px'}
+            width={'180px'}
+            height={'15px'}
             placeholder={realName}
             onChange={(value) => setTempName(value)}
           />
-          <br></br>
-        </div>
+
+          <Input
+            content={'학번'}
+            type={'text'}
+            width={'180px'}
+            height={'15px'}
+            placeholder={realStudentId}
+            onChange={(value) => setTempStudentId(value)}
+          />
+        </style.InputWrapper>
         <FullBtn
           size="big"
           club={userInfo.club}
@@ -70,6 +78,7 @@ export default function ProfileEdit() {
           onClick={() => {
             setRealImage(tempImage);
             setRealName(tempName);
+            setRealStudentId(tempStudentId);
           }}
         />
       </style.ProfileEditContainer>
