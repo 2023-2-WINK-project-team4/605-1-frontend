@@ -1,48 +1,84 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Content from './Content';
 import * as style from './styles';
 
 export default function Dropdown(props) {
-  const [state, setState] = useState(false);
+  const [view, setView] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(null);
   const dropdownRef = useRef(null);
 
-  const handleDocumentClick = (e) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-      setState(false);
-    }
+  const category = [
+    {
+      id: 0,
+      label: 'WINK',
+      value: 'wink',
+    },
+    {
+      id: 1,
+      label: 'FOSCAR',
+      value: 'foscar',
+    },
+  ];
+
+  const handleView = () => {
+    setView(!view);
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleDocumentClick);
+    const outSideClick = (e) => {
+      const { target } = e;
+      if (
+        view &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(target)
+      ) {
+        setView(false);
+      }
+    };
+    document.addEventListener('mousedown', outSideClick);
 
     return () => {
-      document.removeEventListener('click', handleDocumentClick);
+      document.removeEventListener('mousedown', outSideClick);
     };
-  }, []);
-
-  const handleContentClick = () => {
-    // Content가 클릭되면 Dropdown에 표시하도록 state를 업데이트
-    setState(true);
-  };
+  }, [view]);
 
   return (
-    <style.Dropdown
+    <style.DropdownContainer
+      width={props.width}
+      height={view ? props.height * 3 : props.height}
       ref={dropdownRef}
-      width={`${props.width}px`}
-      height={`${props.height}px`}
     >
-      <ul onClick={() => setState(!state)}>
-        <img
-          src={
-            state
-              ? process.env.PUBLIC_URL + '/Images/Dropdown/UpArrow.svg'
-              : process.env.PUBLIC_URL + '/Images/Dropdown/DownArrow.svg'
-          }
-          alt={state ? 'Up Arrow' : 'Down Arrow'}
-        />
-        {state && <Content onClick={handleContentClick} />}{' '}
-        {/* Content에 onClick 함수 전달 */}
-      </ul>
-    </style.Dropdown>
+      <style.DropdownHeader>
+        <style.selectedValueItem>
+          {selectedValue ? selectedValue.label : '동아리'}
+        </style.selectedValueItem>
+        {view ? (
+          <img
+            src={process.env.PUBLIC_URL + '/Images/Dropdown/upArrow.svg'}
+            onClick={() => handleView()}
+          />
+        ) : (
+          <img
+            src={process.env.PUBLIC_URL + '/Images/Dropdown/downArrow.svg'}
+            onClick={() => handleView()}
+          />
+        )}
+      </style.DropdownHeader>
+      {view && (
+        <style.DropdownContent>
+          {category.map((item) => (
+            <style.DropdownItem
+              key={item.id}
+              onClick={() => {
+                setSelectedValue(item);
+                handleView();
+              }}
+              selectedValue={selectedValue?.id === item.id}
+            >
+              {item.label}
+            </style.DropdownItem>
+          ))}
+        </style.DropdownContent>
+      )}
+    </style.DropdownContainer>
   );
 }
