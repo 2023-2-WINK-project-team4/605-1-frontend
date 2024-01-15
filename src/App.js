@@ -4,18 +4,16 @@ import Setting from './Pages/Setting/setting';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
+          <Route path="/" element={<Login />} />
           <Route path="/setting" element={<Setting />} />
           <Route path="/profileEdit" element={<ProfileEdit />} />
-          <Route path="/" element={<Login />} />
         </Routes>
       </div>
     </BrowserRouter>
   );
 }
-
-export default App;
