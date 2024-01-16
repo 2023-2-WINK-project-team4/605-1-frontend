@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as style from './styles';
+import FullBtn from '../Button/fullBtn';
 
 export default function Dropdown(props) {
   const [view, setView] = useState(false);
@@ -42,43 +43,51 @@ export default function Dropdown(props) {
   }, [view]);
 
   return (
-    <style.DropdownContainer
-      width={props.width}
-      height={view ? props.height * 3 : props.height}
-      ref={dropdownRef}
-    >
-      <style.DropdownHeader>
-        <style.selectedValueItem>
-          {selectedValue ? selectedValue.label : '동아리'}
-        </style.selectedValueItem>
-        {view ? (
-          <img
-            src={process.env.PUBLIC_URL + '/Images/Dropdown/upArrow.svg'}
-            onClick={() => handleView()}
-          />
-        ) : (
-          <img
-            src={process.env.PUBLIC_URL + '/Images/Dropdown/downArrow.svg'}
-            onClick={() => handleView()}
-          />
-        )}
-      </style.DropdownHeader>
-      {view && (
-        <style.DropdownContent>
-          {category.map((item) => (
-            <style.DropdownItem
-              key={item.id}
-              onClick={() => {
-                setSelectedValue(item);
-                handleView();
-              }}
-              selectedValue={selectedValue?.id === item.id}
-            >
-              {item.label}
-            </style.DropdownItem>
-          ))}
-        </style.DropdownContent>
+    <style.DropdownContainer gap={props.gap}>
+      {props.isModal ? (
+        <FullBtn club={props.club} size={'small'} name={'사용 동아리'} />
+      ) : (
+        <style.DropdownTitleSpan>{props.content}</style.DropdownTitleSpan>
       )}
+      <style.DropdownContentContainer
+        width={props.width}
+        height={props.height}
+        ref={dropdownRef}
+        view={view}
+      >
+        <style.DropdownHeader isModal={props.isModal}>
+          <style.selectedValueItem>
+            {selectedValue ? selectedValue.label : props.club.toUpperCase()}
+          </style.selectedValueItem>
+          {view ? (
+            <img
+              src={process.env.PUBLIC_URL + '/Images/Dropdown/upArrow.svg'}
+              onClick={() => handleView()}
+            />
+          ) : (
+            <img
+              src={process.env.PUBLIC_URL + '/Images/Dropdown/downArrow.svg'}
+              onClick={() => handleView()}
+            />
+          )}
+        </style.DropdownHeader>
+        {view && (
+          <style.DropdownContent>
+            {category.map((item) => (
+              <style.DropdownItem
+                key={item.id}
+                onClick={() => {
+                  setSelectedValue(item);
+                  handleView();
+                }}
+                selectedValue={selectedValue?.id === item.id}
+              >
+                {item.label}
+              </style.DropdownItem>
+            ))}
+          </style.DropdownContent>
+        )}
+      </style.DropdownContentContainer>
     </style.DropdownContainer>
   );
 }
