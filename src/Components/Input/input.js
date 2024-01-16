@@ -9,6 +9,7 @@ export default function Input(props) {
           <style.Input
             width={props.width}
             height={props.height}
+            marginBottom={props.marginBottom}
             onClick={props.onClick}
             placeholder={props.placeholder}
             onChange={props.onChange}
@@ -22,6 +23,7 @@ export default function Input(props) {
           <style.Input
             width={props.width}
             height={props.height}
+            marginBottom={props.marginBottom}
             onClick={props.onClick}
             placeholder={props.placeholder}
             onChange={props.onChange}
