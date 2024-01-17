@@ -5,6 +5,7 @@ import * as style from './styles';
 import { useLocation } from 'react-router-dom';
 import Input from '../../Components/Input/input';
 import FullBtn from '../../Components/Button/fullBtn';
+import Dropdown from '../../Components/Dropdown/dropdown';
 
 export default function ProfileEdit() {
   const title = '프로필 수정';
@@ -51,7 +52,6 @@ export default function ProfileEdit() {
             />
           </style.EditButton>
         </style.UserProfile>
-
         <style.InputWrapper>
           <Input
             content={'이름'}
@@ -61,7 +61,13 @@ export default function ProfileEdit() {
             placeholder={realName}
             onChange={(value) => setTempName(value)}
           />
-
+          <Dropdown
+            gap={'29px'}
+            club={'wink'}
+            content={'소속'}
+            width={'202px'}
+            height={'29px'}
+          />
           <Input
             content={'학번'}
             type={'text'}

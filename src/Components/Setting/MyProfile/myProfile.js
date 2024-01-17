@@ -28,7 +28,7 @@ export default function MyProfile() {
               <span>{userInfo.name}</span>
             </style.userInfo>
             <style.userInfo>
-              <span>동아리</span>
+              <span>소속</span>
               <span>{userInfo.club}</span>
             </style.userInfo>
             <style.userInfo>

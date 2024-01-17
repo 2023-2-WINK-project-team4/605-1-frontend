@@ -13,6 +13,6 @@ export const Input = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 7px 10px;
 `;
