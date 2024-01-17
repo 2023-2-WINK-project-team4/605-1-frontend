@@ -7,6 +7,30 @@ import WinkSeat from '../../Components/Seat/WinkSeat';
 import FoscarSeat from '../../Components/Seat/FoscarSeat';
 
 export default function RegularSeat(props) {
+  const WinkSeatData = [
+    { club: 'wink', monitor: 'true', number: '1' },
+    { club: 'wink', monitor: 'true', number: '2' },
+    { club: 'wink', monitor: 'true', number: '3' },
+    { club: 'wink', monitor: 'true', number: '4' },
+    { club: 'wink', monitor: 'false', number: '5' },
+    { club: 'wink', monitor: 'true', number: '6' },
+    { club: 'wink', monitor: 'false', number: '7' },
+    { club: 'wink', monitor: 'false', number: '8' },
+  ];
+  const FoscarSeatData = [
+    { club: 'foscar', monitor: 'true', number: '1' },
+    { club: 'foscar', monitor: 'true', number: '2' },
+    { club: 'foscar', monitor: 'true', number: '3' },
+    { club: 'foscar', monitor: 'true', number: '4' },
+    { club: 'foscar', monitor: 'false', number: '5' },
+    { club: 'foscar', monitor: 'false', number: '6' },
+    { club: 'foscar', monitor: 'true', number: '7' },
+    { club: 'foscar', monitor: 'false', number: '8' },
+  ];
+  const WinkSeatDT_1 = WinkSeatData.slice(0, 4);
+  const WinkSeatDT_2 = WinkSeatData.slice(5, 8);
+  const FoscarSeatDT_1 = FoscarSeatData.slice(0, 4);
+  const FoscarSeatDT_2 = FoscarSeatData.slice(5, 8);
   return (
     <>
       <Header title="일반 좌석 배정" />
