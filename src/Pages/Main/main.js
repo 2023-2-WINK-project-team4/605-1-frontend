@@ -10,7 +10,7 @@ export default function Main(props) {
   const navigate = useNavigate();
 
   function goRegular() {
-    navigate('/Regularseat');
+    navigate('/regularSeat');
   }
   return (
     <>
