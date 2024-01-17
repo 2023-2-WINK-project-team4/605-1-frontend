@@ -6,7 +6,7 @@ import * as style from './styles';
 import WinkSeat from '../../Components/Seat/WinkSeat';
 import FoscarSeat from '../../Components/Seat/FoscarSeat';
 
-export default function Regularseat(props) {
+export default function RegularSeat(props) {
   return (
     <>
       <Header title="일반 좌석 배정" />
