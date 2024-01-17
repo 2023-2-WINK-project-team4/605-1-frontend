@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as style from './styles';
+import axios from 'axios';
 import FullBtn from '../../Button/fullBtn';
 import { useNavigate } from 'react-router-dom';
 
 export default function MyProfile() {
-  const userInfo = {
-    name: '유건',
-    studentId: 20203103,
-    club: 'wink',
-    profile:
-      'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
-    kakaoId: '카카오아이디',
-  };
   const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState({});
+  // const userInfo = {
+  //   name: '유건',
+  //   studentId: 20203103,
+  //   club: 'wink',
+  //   profile:
+  //     'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
+  //   kakaoId: '카카오아이디',
+  // };
+
+  useEffect(() => {
+    axios
+      .get('/user') // 나중에 /user앞에 주소 들어가야됨
+      .then((res) => {
+        setUserInfo(res.body);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -33,7 +46,7 @@ export default function MyProfile() {
             </style.userInfo>
             <style.userInfo>
               <span>학번</span>
-              <span>{userInfo.studentId}</span>
+              <span>{userInfo.studentID}</span>
             </style.userInfo>
           </style.userInfoBox>
         </style.userInfoWrapper>
