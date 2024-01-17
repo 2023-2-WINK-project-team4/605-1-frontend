@@ -5,27 +5,30 @@ import Footer from '../../Components/Footer/footer';
 import * as style from './styles';
 import WinkSeat from '../../Components/Seat/WinkSeat';
 import FoscarSeat from '../../Components/Seat/FoscarSeat';
+import { useLocation } from 'react-router-dom';
 
 export default function RegularSeat(props) {
+  const location = useLocation();
+  const club = location.state.club;
   const WinkSeatData = [
-    { club: 'wink', monitor: 'true', number: '1' },
-    { club: 'wink', monitor: 'true', number: '2' },
-    { club: 'wink', monitor: 'true', number: '3' },
-    { club: 'wink', monitor: 'true', number: '4' },
-    { club: 'wink', monitor: 'false', number: '5' },
-    { club: 'wink', monitor: 'true', number: '6' },
-    { club: 'wink', monitor: 'false', number: '7' },
-    { club: 'wink', monitor: 'false', number: '8' },
+    { club: club, monitor: 'true', number: '1' },
+    { club: club, monitor: 'true', number: '2' },
+    { club: club, monitor: 'true', number: '3' },
+    { club: club, monitor: 'true', number: '4' },
+    { club: club, monitor: 'false', number: '5' },
+    { club: club, monitor: 'true', number: '6' },
+    { club: club, monitor: 'false', number: '7' },
+    { club: club, monitor: 'false', number: '8' },
   ];
   const FoscarSeatData = [
-    { club: 'foscar', monitor: 'true', number: '1' },
-    { club: 'foscar', monitor: 'true', number: '2' },
-    { club: 'foscar', monitor: 'true', number: '3' },
-    { club: 'foscar', monitor: 'true', number: '4' },
-    { club: 'foscar', monitor: 'false', number: '5' },
-    { club: 'foscar', monitor: 'false', number: '6' },
-    { club: 'foscar', monitor: 'true', number: '7' },
-    { club: 'foscar', monitor: 'false', number: '8' },
+    { club: club, monitor: 'true', number: '1' },
+    { club: club, monitor: 'true', number: '2' },
+    { club: club, monitor: 'true', number: '3' },
+    { club: club, monitor: 'true', number: '4' },
+    { club: club, monitor: 'false', number: '5' },
+    { club: club, monitor: 'false', number: '6' },
+    { club: club, monitor: 'true', number: '7' },
+    { club: club, monitor: 'false', number: '8' },
   ];
   const WinkSeatDT_1 = WinkSeatData.slice(0, 4);
   const WinkSeatDT_2 = WinkSeatData.slice(5, 8);
