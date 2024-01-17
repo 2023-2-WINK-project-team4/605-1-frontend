@@ -10,7 +10,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const Notice = styled.div`
-  margin-bottom: 64px;
+  margin-bottom: 72px;
 `;
 
 export const FormContainer = styled.div`
@@ -19,5 +19,5 @@ export const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 88px;
+  margin-bottom: 96px;
 `;
