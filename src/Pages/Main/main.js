@@ -9,9 +9,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export default function Main(props) {
   const navigate = useNavigate();
 
-  function goRegular() {
-    navigate('/regularSeat');
-  }
   return (
     <>
       <style.MainContainer>
@@ -46,7 +43,9 @@ export default function Main(props) {
             club={'wink'}
             size={'big'}
             url={process.env.PUBLIC_URL + '/Images/All/whiteSeatIcon.svg'}
-            onClick={() => goRegular()}
+            onClick={() => {
+              navigate('./regularSeat', { state: { club } });
+            }}
           />
         </style.ButtonContainer>
       </style.MainContainer>
