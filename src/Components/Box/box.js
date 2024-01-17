@@ -19,23 +19,25 @@ export default function Box(props) {
           <img src={props.src} alt="chair-icon" />
           <span>{props.content}</span>
         </style.BoxContent>
-      ) : props.pageName === 'regularSeat' ? (
-        <div>
-          <style.BoxTitle>
-            <span>{props.title1}</span>
-          </style.BoxTitle>
-          <style.BoxContent>
-            <span>{props.content1}</span>
-          </style.BoxContent>
-          <br />
-          <style.BoxTitle>
-            <span>{props.title2}</span>
-          </style.BoxTitle>
-          <style.BoxContent>
-            <span>{props.content2}</span>
-          </style.BoxContent>
-        </div>
-      ) : null}
+      ) : (
+        props.pageName === 'regularSeat' && (
+          <div>
+            <style.BoxTitle>
+              <span>{props.title1}</span>
+            </style.BoxTitle>
+            <style.BoxContent>
+              <span>{props.content1}</span>
+            </style.BoxContent>
+            <br />
+            <style.BoxTitle>
+              <span>{props.title2}</span>
+            </style.BoxTitle>
+            <style.BoxContent>
+              <span>{props.content2}</span>
+            </style.BoxContent>
+          </div>
+        )
+      )}
     </style.Box>
   );
 }
