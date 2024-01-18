@@ -38,13 +38,14 @@ export default function Profile() {
             placeholder={'이름'}
             width={'220px'}
             height={'24px'}
+            gap={'25px'}
           />
           <Dropdown
             content={'소속'}
             club={'WINK'}
             width={'240px'}
             height={'38px'}
-            gap={'30px'}
+            gap={'29px'}
           />
           <Input
             content={'학번'}
@@ -52,6 +53,7 @@ export default function Profile() {
             placeholder={'학번'}
             width={'220px'}
             height={'24px'}
+            gap={'25px'}
           />
         </style.FormContainer>
         <Button size="big" name="완료" onClick={completeHandler} />

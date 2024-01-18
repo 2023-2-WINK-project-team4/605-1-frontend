@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const InfoContainer = styled.div`
   height: 100vh;
-  font-weight: bold;
   display: flex;
   flex-direction: column;
   align-items: center;
