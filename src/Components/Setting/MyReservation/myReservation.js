@@ -26,21 +26,28 @@ export default function MyReservation() {
   } else {
     return (
       <>
-        <SeatModal club="wink" myReservationInfo={MyReservationInfo} />
         <style.myReservationContainer>
           <style.title>나의 예약</style.title>
-          <div className="return box" onClick={SeatModal.handleOpenModal}>
-            <style.myReservationWrapper>
-              <StrokeSquareBtn
-                size="middle"
-                club="wink"
-                url={process.env.PUBLIC_URL + '/Images/All/winkSeatIcon.svg'}
-              />
-              <style.seatInfo>
-                {MyReservationInfo.seatNumber}번 좌석 사용중
-              </style.seatInfo>
-            </style.myReservationWrapper>
-          </div>
+          <SeatModal
+            children={
+              <div className="return box">
+                <style.myReservationWrapper>
+                  <StrokeSquareBtn
+                    size="middle"
+                    club="wink"
+                    url={
+                      process.env.PUBLIC_URL + '/Images/All/winkSeatIcon.svg'
+                    }
+                  />
+                  <style.seatInfo>
+                    {MyReservationInfo.seatNumber}번 좌석 사용중
+                  </style.seatInfo>
+                </style.myReservationWrapper>
+              </div>
+            }
+            club="wink"
+            myReservationInfo={MyReservationInfo}
+          />
         </style.myReservationContainer>
       </>
     );
