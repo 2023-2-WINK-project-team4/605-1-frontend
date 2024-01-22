@@ -1,6 +1,7 @@
 import Login from './Pages/Login/login';
 import ProfileEdit from './Pages/ProfileEdit/profileEdit';
 import Setting from './Pages/Setting/setting';
+import RegularSeat from './Pages/RegularSeat/regularSeat';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ export default function App() {
           <Route path="/" element={<Login />} />
           <Route path="/setting" element={<Setting />} />
           <Route path="/profileEdit" element={<ProfileEdit />} />
+          <Route path="/regularSeat" element={<RegularSeat />} />
         </Routes>
       </div>
     </BrowserRouter>

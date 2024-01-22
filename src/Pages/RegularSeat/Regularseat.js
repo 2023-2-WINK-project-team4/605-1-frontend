@@ -3,69 +3,23 @@ import TitleBox from '../../Components/Box/titleBox';
 import Header from '../../Components/Header/header';
 import Footer from '../../Components/Footer/footer';
 import * as style from './styles';
-import WinkSeat from '../../Components/Seat/WinkSeat';
-import FoscarSeat from '../../Components/Seat/FoscarSeat';
+import WinkSeat from '../../Components/Seat/winkSeat';
+import FoscarSeat from '../../Components/Seat/foscarSeat';
 import { useLocation } from 'react-router-dom';
 
 export default function RegularSeat(props) {
   const location = useLocation();
-  const club = location.state.club;
-  const WinkSeatData = [
-    { club: club, monitor: 'true', number: '1' },
-    { club: club, monitor: 'true', number: '2' },
-    { club: club, monitor: 'true', number: '3' },
-    { club: club, monitor: 'true', number: '4' },
-    { club: club, monitor: 'false', number: '5' },
-    { club: club, monitor: 'true', number: '6' },
-    { club: club, monitor: 'false', number: '7' },
-    { club: club, monitor: 'false', number: '8' },
-  ];
-  const FoscarSeatData = [
-    { club: club, monitor: 'true', number: '1' },
-    { club: club, monitor: 'true', number: '2' },
-    { club: club, monitor: 'true', number: '3' },
-    { club: club, monitor: 'true', number: '4' },
-    { club: club, monitor: 'false', number: '5' },
-    { club: club, monitor: 'false', number: '6' },
-    { club: club, monitor: 'true', number: '7' },
-    { club: club, monitor: 'false', number: '8' },
-  ];
-  const WinkSeatDT_1 = WinkSeatData.slice(0, 4);
-  const WinkSeatDT_2 = WinkSeatData.slice(5, 8);
-  const FoscarSeatDT_1 = FoscarSeatData.slice(0, 4);
-  const FoscarSeatDT_2 = FoscarSeatData.slice(5, 8);
+  // const club = location.state.club;
+  const club = 'wink';
+
   return (
     <>
       <Header title="일반 좌석 배정" />
       <style.RegularSeat>
-        <style.GroupContainer>
-          <style.SeatContainer>
-            <FoscarSeat club="wink" monitor="true" number="1" />
-            <FoscarSeat club="wink" monitor="true" number="2" />
-            <FoscarSeat club="wink" monitor="true" number="3" />
-            <FoscarSeat club="wink" monitor="true" number="4" />
-          </style.SeatContainer>
-          <style.SeatContainer>
-            <WinkSeat club="wink" monitor="true" number="1" />
-            <WinkSeat club="wink" monitor="true" number="2" />
-            <WinkSeat club="wink" monitor="true" number="3" />
-            <WinkSeat club="wink" monitor="true" number="4" />
-          </style.SeatContainer>
-        </style.GroupContainer>
-        <style.GroupContainer>
-          <style.SeatContainer>
-            <FoscarSeat club="wink" number="5" />
-            <FoscarSeat club="wink" number="6" />
-            <FoscarSeat club="wink" monitor="true" number="7" />
-            <FoscarSeat club="wink" number="8" />
-          </style.SeatContainer>
-          <style.SeatContainer>
-            <WinkSeat club="wink" number="5" />
-            <WinkSeat club="wink" monitor="true" number="6" />
-            <WinkSeat club="wink" number="7" />
-            <WinkSeat club="wink" number="8" />
-          </style.SeatContainer>
-        </style.GroupContainer>
+        <style.TotalSeat>
+          <FoscarSeat club={club} />
+          <WinkSeat club={club} />
+        </style.TotalSeat>
         <style.Titlecontainer>
           <TitleBox club="wink" title="좌석 배정 및 반납 방법" />
         </style.Titlecontainer>
