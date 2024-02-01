@@ -27,9 +27,6 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  > div {
-    font-weight: 700;
-  }
   background: white;
   border: 2px solid ${(props) => props.theme.color};
   padding: 35px 35px;
