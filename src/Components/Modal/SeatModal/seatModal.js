@@ -12,6 +12,11 @@ export default function SeatModal(props) {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  const handleClick = () => {
+    handleCloseModal();
+    props.onClick();
+  };
   return (
     <div>
       <div onClick={handleOpenModal}>{props.children}</div>
@@ -39,7 +44,7 @@ export default function SeatModal(props) {
                 size="small"
                 name="확인"
                 club={props.club}
-                onClick={(handleCloseModal, props.onClick)}
+                onClick={handleClick}
               />
               <FullBtn
                 size="small"
