@@ -20,6 +20,7 @@ export default function MyReservation() {
   //       console.log(error);
   //     });
   // }, []);
+  //
 
   if (MyReservationInfo.seatStatus !== 'using') {
     return null;
