@@ -18,7 +18,7 @@ export default function MyProfile() {
 
   useEffect(() => {
     axios
-      .get('/user') // 나중에 /user앞에 주소 들어가야됨
+      .get('http://localhost:3000/user') // 나중에 /user앞에 주소 들어가야됨
       .then((res) => {
         setUserInfo(res.body);
       })

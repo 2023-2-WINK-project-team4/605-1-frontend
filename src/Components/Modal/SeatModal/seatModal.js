@@ -39,7 +39,7 @@ export default function SeatModal(props) {
                 size="small"
                 name="확인"
                 club={props.club}
-                onClick={handleCloseModal}
+                onClick={(handleCloseModal, props.onClick)}
               />
               <FullBtn
                 size="small"
