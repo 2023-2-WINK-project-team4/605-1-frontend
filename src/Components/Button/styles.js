@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const SmallFullButton = styled.button`
+  width: 48px;
+  height: 26px;
   background: ${(props) => props.theme.color}; // theme color
-  padding: 8px;
   color: white;
   border: none;
   border-radius: 10px;
@@ -47,9 +48,6 @@ export const SmallFullSquareButton = styled.button`
 `;
 
 export const BigFullSquareButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 120px;
   height: 120px;
   background: ${(props) => props.theme.color};
@@ -80,9 +78,6 @@ export const MiddleStrokeSquareButton = styled.button`
 `;
 
 export const BigStrokeSquareButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 120px;
   height: 120px;
   background: white;

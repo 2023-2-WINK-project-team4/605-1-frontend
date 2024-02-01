@@ -20,7 +20,6 @@ export default function Input(props) {
         <style.Container>
           <span>{props.content}</span>
           <style.Input
-            gap={props.gap}
             width={props.width}
             height={props.height}
             onClick={props.onClick}
