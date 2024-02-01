@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Header from '../../Components/Header/header';
 import DatePicker from 'react-datepicker';
+import { ThemeProvider } from 'styled-components';
+import { themeWink, themeFoscar } from '../../Components/Theme/theme';
+import { GlobalStyle } from './styles';
 import Footer from '../../Components/Footer/footer';
 import * as style from './styles';
 import ko from 'date-fns/locale/ko';
@@ -33,7 +36,8 @@ export default function MeetingTable(props) {
   ));
 
   return (
-    <>
+    <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
+      <GlobalStyle />
       <Header title={title} />
       <style.TableContainer>
         <style.Icon>
@@ -87,6 +91,6 @@ export default function MeetingTable(props) {
         )}
       </style.TableContainer>
       <Footer title={title} />
-    </>
+    </ThemeProvider>
   );
 }
