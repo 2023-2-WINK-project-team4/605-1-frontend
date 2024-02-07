@@ -2,12 +2,10 @@ import React from 'react';
 import * as style from './styles';
 
 export default function Login() {
-  const REST_API_KEY = '???'; // 백엔드에서 발급받은 값으로 변경
-  const REDIRECT_URI = '???'; // 백엔드에서 발급받은 값으로 변경
-  const kakaoLink = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  const kakaoURL = 'http://43.201.38.170:8080/auth/login';
 
-  const loginHandler = () => {
-    window.location.href = kakaoLink; // 카카오 로그인 페이지로 리디렉션
+  const handleLogin = () => {
+    window.location.href = kakaoURL; // 카카오 로그인 페이지로 리디렉션
   };
 
   return (
@@ -16,8 +14,11 @@ export default function Login() {
         src={process.env.PUBLIC_URL + '/Images/All/whiteAppIcon.svg'}
         alt=""
       />
-      <style.KakaoButton onClick={loginHandler}>
-        <img src={process.env.PUBLIC_URL + '/Images/Login/kakao.svg'} />
+      <style.KakaoButton onClick={handleLogin}>
+        <img
+          src={process.env.PUBLIC_URL + '/Images/Login/kakao.svg'}
+          alt="카카오톡 로고"
+        />
         <span>카카오로 시작하기</span>
       </style.KakaoButton>
     </style.LoginContainer>
