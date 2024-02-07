@@ -28,15 +28,18 @@ export const BoxContent = styled.div`
   align-items: center;
 `;
 
-export const TitleBoxCom = styled.div`
-  width: max-content;
-  height: 22px;
+export const TitleBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${(props) => (props.pageName === 'main' ? '160px' : 'max-content')};
+  height: ${(props) => (props.pageName === 'main' ? '60px' : '25px')};
   border: none;
   border-radius: 10px;
-  padding: 4px 10px 0px 10px;
+  padding: 4px 10px;
   background: ${(props) => props.theme.color}; // theme color
+  box-shadow: 5px 5px 5px gray;
   color: white; // theme color
-
   font-size: 16px;
   font-weight: 400;
   text-align: center;
