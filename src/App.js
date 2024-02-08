@@ -10,10 +10,10 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Login />} />
+          {/* <Route path="/" element={<Login />} />
           <Route path="/setting" element={<Setting />} />
-          <Route path="/profileEdit" element={<ProfileEdit />} />
-          <Route path="/regularSeat" element={<RegularSeat />} />
+          <Route path="/profileEdit" element={<ProfileEdit />} /> */}
+          <Route path="/" element={<RegularSeat />} />
         </Routes>
       </div>
     </BrowserRouter>

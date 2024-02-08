@@ -42,3 +42,13 @@ export const BannedSeat = styled.div`
   border: 3px solid #808080;
   margin: 5px;
 `;
+
+export const ProfilePic = styled.img`
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-left: 19px;
+  margin-right: 6px;
+  margin-bottom: 5px;
+`;

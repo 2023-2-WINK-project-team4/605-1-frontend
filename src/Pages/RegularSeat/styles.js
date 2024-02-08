@@ -12,12 +12,13 @@ export const RegularSeat = styled.div`
 
 export const TotalSeat = styled.div`
   display: flex;
+  margin-bottom: 50px;
 `;
 
 export const Titlecontainer = styled.div`
   width: 371px;
   margin-left: 0px;
-  margin-bottom: 13px;
+  margin-bottom: 11px;
   &:last-child {
     margin-bottom: 0px;
   }

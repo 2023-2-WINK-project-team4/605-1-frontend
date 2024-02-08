@@ -1,9 +1,19 @@
 import * as style from './styles';
 import { useState } from 'react';
 import SeatModal from '../Modal/SeatModal/seatModal';
+import axios from 'axios';
 
 export default function WinkSeat(props) {
-  // const [state, setState] = useState(False);
+  useEffect(() => {
+    axios
+      .get('seat/${props.club}')
+      .then((res) => {
+        const MySeatData = res;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const club = 'wink';
 
@@ -21,6 +31,13 @@ export default function WinkSeat(props) {
   const winkSeatDT1 = winkSeatData.slice(0, 4);
   const winkSeatDT2 = winkSeatData.slice(4, 8);
 
+  const handleSeatClick = (seatNumber, seatStatus) => {
+    if (seatStatus === 'notUsed') {
+      setSelectedSeat(seatNumber);
+      setIsModalOpen(true); //사용하지 않는 좌석만 열리게 함
+    }
+  };
+
   return (
     <>
       {props.club === 'wink' ? (
@@ -28,15 +45,30 @@ export default function WinkSeat(props) {
           <style.SeatContainer>
             {winkSeatDT1.map((item) => {
               return (
-                <style.UseableSeat club={club} /*onClick={setState(True)}*/>
+                <style.UseableSeat
+                  club={club}
+                  key={item.number}
+                  // onClick={() =>
+                  //   handleSeatClick(item.seatNumber, item.seatStatus)
+                  // }문제이스
+                >
                   <span>{item.number}</span>
                   {item.monitor === 'true' && (
-                    <img
-                      src={
-                        process.env.PUBLIC_URL + '/Images/Seat/monitorIcon.svg'
-                      }
-                      alt="Monitor Icon"
-                    />
+                    <>
+                      <img
+                        src={
+                          process.env.PUBLIC_URL +
+                          '/Images/Seat/monitorIcon.svg'
+                        }
+                        alt="Monitor Icon"
+                      />
+                      {MySeatData[item.number - 1].seatStatus === 'using' ? (
+                        <style.ProfilePic
+                          src={MySeatdata[item.number - 1].userProfileUrl}
+                          alt="profile pic"
+                        />
+                      ) : null}
+                    </>
                   )}
                 </style.UseableSeat>
               );
@@ -45,15 +77,31 @@ export default function WinkSeat(props) {
           <style.SeatContainer>
             {winkSeatDT2.map((item) => {
               return (
-                <style.UseableSeat club={club} /*onClick={setState(True)}*/>
+                <style.UseableSeat
+                  club={club}
+                  key={item.number}
+                  // onClick={() =>
+                  //   handleSeatClick(item.seatNumber, item.seatStatus)
+                  // }
+                  // seatStatus={item.seatStatus}
+                >
                   <span>{item.number}</span>
                   {item.monitor === 'true' && (
-                    <img
-                      src={
-                        process.env.PUBLIC_URL + '/Images/Seat/monitorIcon.svg'
-                      }
-                      alt="Monitor Icon"
-                    />
+                    <>
+                      <img
+                        src={
+                          process.env.PUBLIC_URL +
+                          '/Images/Seat/monitorIcon.svg'
+                        }
+                        alt="Monitor Icon"
+                      />
+                      {MySeatData[item.number - 1].seatStatus === 'using' ? (
+                        <style.ProfilePic
+                          src={MySeatdata[item.number - 1].userProfileUrl}
+                          alt="profile pic"
+                        />
+                      ) : null}
+                    </>
                   )}
                 </style.UseableSeat>
               );
