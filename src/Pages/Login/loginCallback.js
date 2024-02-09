@@ -3,14 +3,15 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginCallBack() {
-  const url = process.env.REACT_APP_API_URL;
   const code = new URLSearchParams(window.location.search).get('code');
   const navigate = useNavigate();
 
   useEffect(() => {
     if (code) {
       axios
-        .get(`${url}/auth/login/callback?code=${code}`)
+        .get(
+          `${process.env.REACT_APP_API_URL}/auth/login/callback?code=${code}`,
+        )
         .then((res) => {
           console.log(res);
 
