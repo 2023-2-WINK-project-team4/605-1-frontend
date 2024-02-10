@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export default function MyProfile() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({});
+  const url = process.env.REACT_APP_API_URL;
   // const userInfo = {
   //   name: '유건',
   //   studentId: 20203103,
@@ -18,7 +19,7 @@ export default function MyProfile() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/user') // 나중에 /user앞에 주소 들어가야됨
+      .get(url + 'user') // 나중에 /user앞에 주소 들어가야됨
       .then((res) => {
         setUserInfo(res.body);
       })

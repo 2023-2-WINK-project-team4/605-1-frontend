@@ -5,24 +5,21 @@ import StrokeSquareBtn from '../../Button/strokeSquareBtn';
 import axios from 'axios';
 
 export default function MyReservation() {
-  const MyReservationInfo = {
-    seatNumber: 4,
-    seatStatus: 'using',
-    startTime: '2023-11-14T13:41:23.521Z',
-  };
-  // useEffect(() => {
-  //   axios
-  //     .get('seat/my-seat') // 나중에 seat/my-seat 앞에 주소 들어가야됨
-  //     .then((res) => {
-  //       const MyReservationInfo = res;
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
-  //
+  const url = process.env.REACT_APP_API_URL;
+  const [myReservationInfo, setMyReservationInfo] = useState(null);
 
-  if (MyReservationInfo.seatStatus !== 'using') {
+  useEffect(() => {
+    axios
+      .get(url + 'seat/my-seat')
+      .then((res) => {
+        setMyReservationInfo(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  if (!myReservationInfo.seatNumber) {
     return null;
   } else {
     return (
@@ -41,13 +38,13 @@ export default function MyReservation() {
                     }
                   />
                   <style.seatInfo>
-                    {MyReservationInfo.seatNumber}번 좌석 사용중
+                    {myReservationInfo.seatNumber}번 좌석 사용중
                   </style.seatInfo>
                 </style.myReservationWrapper>
               </div>
             }
             club="wink"
-            myReservationInfo={MyReservationInfo}
+            myReservationInfo={myReservationInfo}
           />
         </style.myReservationContainer>
       </>
