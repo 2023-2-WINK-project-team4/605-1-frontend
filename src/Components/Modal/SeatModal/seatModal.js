@@ -1,10 +1,29 @@
 import * as style from './styles';
 import FullBtn from '../../Button/fullBtn';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { themeWink, themeFoscar } from '../../Theme/theme';
+import axios from 'axios';
 
 export default function SeatModal(props) {
+  const url = process.env.REACT_APP_API_URL;
+  const [clubSeat, setClubseat] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(url + `seat/${props.club}`)
+      .then((res) => {
+        setClubseat(
+          res.data.filter((data) => {
+            return data.seatNumber == props.tryToSeat;
+          }),
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isButtonOpen, setIsButtonOpen] = useState(true);
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -30,29 +49,40 @@ export default function SeatModal(props) {
               X
             </style.ModalCloseButton>
             <div>
-              {props.myReservationInfo.seatNumber !== 0 ? (
+              {props.myReservationInfo.seatNumber !== null ? (
                 <p>
                   {props.myReservationInfo.seatNumber}번 좌석을
                   반납하시겠습니까?
                 </p>
+              ) : clubSeat.studentId != null ? (
+                <div>
+                  {() => {
+                    setIsButtonOpen(false);
+                    return <p>이미 사용중인 좌석입니다</p>;
+                  }}
+                </div>
               ) : (
                 <p>{props.tryToSeat}번 좌석을 배정하시겠습니까?</p>
               )}
             </div>
-            <style.ButtonBox>
-              <FullBtn
-                size="small"
-                name="확인"
-                club={props.club}
-                onClick={handleClick}
-              />
-              <FullBtn
-                size="small"
-                name="취소"
-                club={props.club}
-                onClick={handleCloseModal}
-              />
-            </style.ButtonBox>
+            <div>
+              {isButtonOpen ? (
+                <style.ButtonBox>
+                  <FullBtn
+                    size="small"
+                    name="확인"
+                    club={props.club}
+                    onClick={handleClick}
+                  />
+                  <FullBtn
+                    size="small"
+                    name="취소"
+                    club={props.club}
+                    onClick={handleCloseModal}
+                  />
+                </style.ButtonBox>
+              ) : null}
+            </div>
           </style.ModalContent>
         </style.ModalWrapper>
       )}
