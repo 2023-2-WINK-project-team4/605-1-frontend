@@ -5,6 +5,7 @@ import Setting from './Pages/Setting/setting';
 import Main from './Pages/Main/main';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginCallBack from './Pages/Login/loginCallback';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/loginCallback" element={<LoginCallBack />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/main" element={<Main />} />
           <Route path="/setting" element={<Setting />} />
