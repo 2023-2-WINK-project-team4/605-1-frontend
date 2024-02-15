@@ -30,7 +30,7 @@ export default function Profile() {
       );
 
       if (response.data.msg === '회원 가입 성공') {
-        navigate('/main');
+        navigate('/main', { state: { club: club } });
       } else {
         alert('회원 가입 실패');
         navigate('/profile');
