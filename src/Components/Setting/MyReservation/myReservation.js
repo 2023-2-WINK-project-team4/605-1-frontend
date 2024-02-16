@@ -19,6 +19,18 @@ export default function MyReservation() {
       });
   }, []);
 
+  const returnSeat = () => {
+      axios
+        .patch(url + 'seat/return')
+        .then((res) => {
+          console.log("좌석반납완료")
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
   if (!myReservationInfo.seatNumber) {
     return null;
   } else {
@@ -50,4 +62,3 @@ export default function MyReservation() {
       </>
     );
   }
-}
