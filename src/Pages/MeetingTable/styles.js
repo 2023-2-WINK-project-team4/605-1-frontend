@@ -51,7 +51,7 @@ export const GlobalStyle = createGlobalStyle`
     color: white;
   }
   .react-datepicker__triangle {
-    transform: translate(132px, 0px) !important;
+    display: none;
   }
 `;
 
