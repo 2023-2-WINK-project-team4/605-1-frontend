@@ -31,13 +31,12 @@ export const CustomDatePicker = styled.div`
   border: 1px solid grey;
   border-radius: 10px;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 600;
   text-align: center;
   margin-top: 24px;
   margin-right: 180px;
   position: relative;
   display: flex;
-  justify-content: right;
   align-items: center;
   padding: 0 10px 2px;
 `;

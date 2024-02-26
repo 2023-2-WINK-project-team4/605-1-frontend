@@ -45,6 +45,7 @@ export default function MeetingTable(props) {
         alt="캘린더 드롭다운"
         ref={ref}
         onClick={onClick}
+        style={{ marginTop: '3px' }}
       />
     </style.CustomDatePicker>
   ));
