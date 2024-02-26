@@ -13,8 +13,8 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  width: 260px;
-  height: 356px;
+  width: ${(props) => (props.pageName === 'meetingTable' ? '260px' : '280px')};
+  height: ${(props) => (props.pageName === 'meetingTable' ? '356px' : '460px')};
   background: white;
   border: 2px solid ${(props) => props.theme.color};
   border-radius: 10px;
@@ -55,8 +55,8 @@ export const FormContainer = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
-  align-items: ${(props) => (props.column ? 'flex-start' : 'center')};
-  gap: ${(props) => (props.column ? '12px' : '20px')};
+  align-items: flex-start;
+  gap: ${(props) => (props.column ? '12px' : '32px')};
   vertical-align: ${(props) => (props.column ? 'top' : 'middle')};
 `;
 
@@ -77,11 +77,18 @@ export const Input = styled.input`
       : ''}
 `;
 
+export const DatePickerContainer = styled.div`
+  position: absolute;
+  width: 284px;
+  top: 73%;
+`;
+
 export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: ${(props) =>
+    props.pageName === 'meetingTable' ? '20px' : '240px'};
   button:first-child {
     margin-right: 20px;
   }

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { themeWink, themeFoscar } from '../Theme/theme';
-import Button from '../Button/fullBtn';
-import Dropdown from '../Dropdown/dropdown';
+import { themeWink, themeFoscar } from '../../Theme/theme';
+import Button from '../../Button/fullBtn';
+import Dropdown from '../../Dropdown/dropdown';
 import DatePicker from 'react-mobile-datepicker';
 import * as style from './styles';
 
-export default function ReserveReportModal(props) {
+export default function InfoRegisterModal(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [seatNum, setSeatNum] = useState('');
@@ -15,11 +15,10 @@ export default function ReserveReportModal(props) {
   const [time, setTime] = useState(new Date());
 
   const handleDateSelect = (time) => {
-    setTime(time);
-    toggleDatePicker();
+    handleDateCancel();
   };
 
-  const toggleDatePicker = () => {
+  const handleDateCancel = () => {
     setIsOpen(!isOpen);
   };
 
@@ -56,6 +55,10 @@ export default function ReserveReportModal(props) {
     },
   };
 
+  const handleClose = () => {
+    props.closeModal();
+  };
+
   const handleConfirm = () => {
     // 정보 저장
     props.closeModal();
@@ -67,6 +70,7 @@ export default function ReserveReportModal(props) {
         <style.ModalContainer>
           <style.ModalContent
             theme={props.club === 'wink' ? themeWink : themeFoscar}
+            pageName={props.pageName}
           >
             <style.ModalHeader>
               <span>
@@ -74,9 +78,7 @@ export default function ReserveReportModal(props) {
                   ? '부정 사용자 신고하기'
                   : '예약하기'}
               </span>
-              <style.CloseButton onClick={props.closeModal}>
-                X
-              </style.CloseButton>
+              <style.CloseButton onClick={handleClose}>X</style.CloseButton>
             </style.ModalHeader>
 
             <style.FormContainer>
@@ -98,7 +100,7 @@ export default function ReserveReportModal(props) {
                 ) : (
                   <Dropdown
                     club={'WINK'}
-                    width={'120px'}
+                    width={'156px'}
                     height={'34px'}
                     onChange={(e) => setClub(e.target.value)}
                   />
@@ -122,45 +124,55 @@ export default function ReserveReportModal(props) {
                 ) : (
                   <style.Input
                     type={'text'}
-                    width={'132px'}
+                    width={'168px'}
                     height={'20px'}
                     onChange={(e) => setReps(e.target.value)}
                   />
                 )}
               </style.InputContainer>
-              <style.InputContainer column>
-                <Button size="small" name="사용 시간" club={props.club} />
+              <style.InputContainer
+                column
+                style={
+                  props.pageName === 'meetingTable'
+                    ? {}
+                    : { marginLeft: '-204px' }
+                }
+              >
+                <Button
+                  size="small"
+                  name={
+                    props.pageName === 'meetingTable'
+                      ? '신고 사유'
+                      : '사용 시간'
+                  }
+                  club={props.club}
+                />
+
                 {props.pageName === 'meetingTable' ? (
                   <style.Input
                     as="textarea"
                     type={'textarea'}
-                    width={'212px'}
+                    width={'224px'}
                     height={'88px'}
                     onChange={(e) => setReason(e.target.value)}
                   />
                 ) : (
-                  <>
-                    <style.Input
-                      width={'212px'}
-                      height={'88px'}
-                      centerText
-                      onClick={toggleDatePicker}
-                      readOnly
-                    />
+                  <style.DatePickerContainer>
                     <DatePicker
                       value={time}
-                      isOpen={isOpen}
+                      isPopup={false}
+                      isOpen={true}
                       dateConfig={dateConfig}
                       showHeader={false}
                       showFooter={false}
                       onSelect={handleDateSelect}
-                      onCancel={toggleDatePicker}
+                      onCancel={handleDateCancel}
                     />
-                  </>
+                  </style.DatePickerContainer>
                 )}
               </style.InputContainer>
             </style.FormContainer>
-            <style.ButtonContainer>
+            <style.ButtonContainer pageName={props.pageName}>
               <div>
                 <Button
                   size="small"
@@ -172,7 +184,7 @@ export default function ReserveReportModal(props) {
                   size="small"
                   name="취소"
                   club={props.club}
-                  onClick={props.closeModal}
+                  onClick={handleClose}
                 />
               </div>
             </style.ButtonContainer>
