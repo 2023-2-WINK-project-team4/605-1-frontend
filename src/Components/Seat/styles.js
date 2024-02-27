@@ -30,9 +30,12 @@ export const UseableSeat = styled.div`
   span {
     margin-left: 1px;
   }
-  img {
+  /* img {
     margin-left: 5px;
-  }
+  } */
+`;
+export const Icon = styled.img`
+  margin-left: 5px;
 `;
 
 export const BannedSeat = styled.div`
@@ -47,8 +50,8 @@ export const ProfilePic = styled.img`
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  margin-top: 20px;
-  margin-left: 19px;
-  margin-right: 6px;
-  margin-bottom: 5px;
+  margin-top: -6px;
+  margin-left: 16px;
+  margin-right: -5px;
+  margin-bottom: -5px;
 `;
