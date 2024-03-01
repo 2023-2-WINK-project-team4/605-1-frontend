@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,11 +13,12 @@ export default function LoginCallBack() {
           `${process.env.REACT_APP_API_URL}/auth/login/callback?code=${code}`,
         )
         .then((res) => {
-          console.log(res);
-
           if (res.data.msg === 'sign_up') {
-            navigate('/profile');
+            const kakaoId = res.data.kakaoId;
+            console.log(kakaoId);
+            navigate('/profile', { state: { kakaoId: kakaoId } });
           } else {
+            sessionStorage.setItem('token', res.data.token);
             navigate('/main');
           }
         })
