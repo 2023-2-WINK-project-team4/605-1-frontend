@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Header from '../../Components/Header/header';
 import Box from '../../Components/Box/box';
 import Input from '../../Components/Input/input';
@@ -10,6 +10,9 @@ import axios from 'axios';
 
 export default function Profile() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const kakaoId = location.state.kakaoId;
 
   const title = '회원 정보 입력';
 
@@ -19,17 +22,19 @@ export default function Profile() {
 
   const handleJoin = async () => {
     try {
-      const response = await axios.post(
+      const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/join`,
         {
           name,
           club,
           studentId,
+          kakaoId,
         },
         { withCredentials: true },
       );
 
-      if (response.data.msg === '회원 가입 성공') {
+      if (res.data.msg === '회원 가입 성공') {
+        sessionStorage.setItem('token', res.data.token);
         navigate('/main', { state: { club: club } });
       } else {
         alert('회원 가입 실패');
