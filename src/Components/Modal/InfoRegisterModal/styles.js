@@ -80,7 +80,7 @@ export const Input = styled.input`
 export const DatePickerContainer = styled.div`
   position: absolute;
   width: 284px;
-  top: 73%;
+  top: 80%;
 `;
 
 export const ButtonContainer = styled.div`
