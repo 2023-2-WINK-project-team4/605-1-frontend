@@ -4,11 +4,30 @@ import Box from '../../Components/Box/box';
 import Footer from '../../Components/Footer/footer';
 import TitleBox from '../../Components/Box/titleBox';
 import * as style from './styles';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Main(props) {
   const navigate = useNavigate();
+  const location = useLocation();
+  // const club = location.state.club;
   const club = 'wink';
+  const token = sessionStorage.getItem('token');
+  const [seatInfo, setSeatInfo] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/seat/my-seat`, { token })
+      .then((res) => {
+        setSeatInfo(res);
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <>
       <style.MainContainer>
@@ -31,7 +50,11 @@ export default function Main(props) {
               borderColor={'#3A70FF'}
               pageName={'main'}
               src={process.env.PUBLIC_URL + '/Images/All/winkSeatIcon.svg'}
-              content={'내 좌석 예약 현황'}
+              content={
+                seatInfo.seatNumber != null
+                  ? seatInfo.seatNumber + '번 좌석 예약 중'
+                  : '이용 중인 좌석이 없습니다.'
+              }
             />
           </style.ReservationContainer>
           <style.ButtonContainer>
