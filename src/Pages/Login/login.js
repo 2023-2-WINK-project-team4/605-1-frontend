@@ -2,10 +2,8 @@ import React from 'react';
 import * as style from './styles';
 
 export default function Login() {
-  const kakaoURL = 'http://43.201.38.170:8080/auth/login';
-
   const handleLogin = () => {
-    window.location.href = kakaoURL; // 카카오 로그인 페이지로 리디렉션
+    window.location.href = `${process.env.REACT_APP_API_URL}/auth/login`; // 카카오 로그인 페이지로 리디렉션
   };
 
   return (
