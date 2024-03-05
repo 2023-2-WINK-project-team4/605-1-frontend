@@ -1,90 +1,94 @@
 import * as style from './styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SeatModal from '../Modal/SeatModal/seatModal';
 import axios from 'axios';
+import { isStatement } from '@babel/types';
 
 export default function WinkSeat(props) {
-  // useEffect(() => {
-  //   axios
-  //     .get('seat/${props.club}')
-  //     .then((res) => {
-  //       const MySeatData = res;
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
-
-  const MySeatData = [
-    {
-      seatNumber: 1,
-      seatStatus: 'using',
-      studentId: 20213100,
-      userName: '홍승현',
-      userProfileUrl:
-        'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
-      startTime: '2024-02-12T12:41:23.521Z',
-    },
-    {
-      seatNumber: 2,
-      seatStatus: 'using',
-      studentId: 20201111,
-      userName: '류건',
-      userProfileUrl:
-        'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
-      startTime: '2024-02-12T12:41:23.521Z',
-    },
-    {
-      seatNumber: 3,
-      seatStatus: 'notUsed',
-      studentId: null,
-      userName: null,
-      userProfileUrl: null,
-      startTime: null,
-    },
-    {
-      seatNumber: 4,
-      seatStatus: 'notUsed',
-      studentId: null,
-      userName: null,
-      userProfileUrl: null,
-      startTime: null,
-    },
-    {
-      seatNumber: 5,
-      seatStatus: 'notUsed',
-      studentId: null,
-      userName: null,
-      userProfileUrl: null,
-      startTime: null,
-    },
-    {
-      seatNumber: 6,
-      seatStatus: 'notUsed',
-      studentId: null,
-      userName: null,
-      userProfileUrl: null,
-      startTime: null,
-    },
-    {
-      seatNumber: 7,
-      seatStatus: 'notUsed',
-      studentId: null,
-      userName: null,
-      userProfileUrl: null,
-      startTime: null,
-    },
-    {
-      seatNumber: 8,
-      seatStatus: 'notUsed',
-      studentId: null,
-      userName: null,
-      userProfileUrl: null,
-      startTime: null,
-    },
-  ];
-
+  const [mySeatData, setMySeatData] = useState([]);
   const club = 'wink';
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/seat/${club}`)
+      .then((res) => {
+        console.log('res : ', res);
+        setMySeatData(res);
+        // const MySeatData = SetMySeatData(res);
+      })
+      .catch((error) => {
+        console.log('gmlgml');
+        console.log(error);
+      });
+  }, []);
+
+  // const MySeatData = [
+  //   {
+  //     seatNumber: 1,
+  //     seatStatus: 'using',
+  //     studentId: 20213100,
+  //     userName: '홍승현',
+  //     userProfileUrl:
+  //       'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
+  //     startTime: '2024-02-12T12:41:23.521Z',
+  //   },
+  //   {
+  //     seatNumber: 2,
+  //     seatStatus: 'using',
+  //     studentId: 20201111,
+  //     userName: '류건',
+  //     userProfileUrl:
+  //       'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
+  //     startTime: '2024-02-12T12:41:23.521Z',
+  //   },
+  //   {
+  //     seatNumber: 3,
+  //     seatStatus: 'notUsed',
+  //     studentId: null,
+  //     userName: null,
+  //     userProfileUrl: null,
+  //     startTime: null,
+  //   },
+  //   {
+  //     seatNumber: 4,
+  //     seatStatus: 'notUsed',
+  //     studentId: null,
+  //     userName: null,
+  //     userProfileUrl: null,
+  //     startTime: null,
+  //   },
+  //   {
+  //     seatNumber: 5,
+  //     seatStatus: 'notUsed',
+  //     studentId: null,
+  //     userName: null,
+  //     userProfileUrl: null,
+  //     startTime: null,
+  //   },
+  //   {
+  //     seatNumber: 6,
+  //     seatStatus: 'notUsed',
+  //     studentId: null,
+  //     userName: null,
+  //     userProfileUrl: null,
+  //     startTime: null,
+  //   },
+  //   {
+  //     seatNumber: 7,
+  //     seatStatus: 'notUsed',
+  //     studentId: null,
+  //     userName: null,
+  //     userProfileUrl: null,
+  //     startTime: null,
+  //   },
+  //   {
+  //     seatNumber: 8,
+  //     seatStatus: 'notUsed',
+  //     studentId: null,
+  //     userName: null,
+  //     userProfileUrl: null,
+  //     startTime: null,
+  //   },
+  // ];
 
   const winkSeatData = [
     { club: club, monitor: 'true', number: '1' },
@@ -99,7 +103,8 @@ export default function WinkSeat(props) {
 
   const winkSeatDT1 = winkSeatData.slice(0, 4);
   const winkSeatDT2 = winkSeatData.slice(4, 8);
-  console.log(winkSeatDT1);
+  console.log('winkSeatDT1 : ', winkSeatDT1);
+  console.log('winkSeatDT2 : ', winkSeatDT2);
 
   // const handleSeatClick = (seatNumber, seatStatus) => {
   //   if (seatStatus === 'notUsed') {
@@ -132,6 +137,7 @@ export default function WinkSeat(props) {
                       <div>
                         <style.UseableSeat club={club} key={item.number}>
                           <span>{item.number}</span>
+                          {item.monitor}
                           {item.monitor === 'true' && (
                             <>
                               <style.Icon
@@ -141,17 +147,15 @@ export default function WinkSeat(props) {
                                 }
                                 alt="Monitor Icon"
                               />
-                              {MySeatData[item.number - 1].seatStatus ===
-                              'using' ? (
-                                <style.ProfilePic
-                                  src={
-                                    MySeatData[item.number - 1].userProfileUrl
-                                  }
-                                  alt="profile pic"
-                                />
-                              ) : null}
                             </>
                           )}
+                          {mySeatData[item.number - 1].seatStatus ===
+                          'using' ? (
+                            <style.ProfilePic
+                              src={mySeatData[item.number - 1].userProfileUrl}
+                              alt="profile pic"
+                            />
+                          ) : null}
                         </style.UseableSeat>
                       </div>
                     }
@@ -196,13 +200,13 @@ export default function WinkSeat(props) {
                               }
                               alt="Monitor Icon"
                             />
-                            {MySeatData[item.number - 1].seatStatus ===
+                            {/* {mySeatData[item.number - 1].seatStatus ===
                             'using' ? (
                               <style.ProfilePic
-                                src={MySeatData[item.number - 1].userProfileUrl}
+                                src={mySeatData[item.number - 1].userProfileUrl}
                                 alt="profile pic"
                               />
-                            ) : null}
+                            ) : null} */}
                           </>
                           /// 여기까지
                         )}
