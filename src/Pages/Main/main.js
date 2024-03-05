@@ -12,10 +12,11 @@ export default function Main(props) {
   const navigate = useNavigate();
   const location = useLocation();
   // const club = location.state.club;
-  const club = 'wink';
+  // const club = 'wink';
+  const club = sessionStorage.getItem('club');
   const token = sessionStorage.getItem('token');
   const [seatInfo, setSeatInfo] = useState({});
-
+  console.log(club);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/seat/my-seat`, { token })
