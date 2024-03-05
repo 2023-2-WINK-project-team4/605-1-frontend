@@ -6,7 +6,10 @@ import axios from 'axios';
 
 export default function MyReservation() {
   const url = process.env.REACT_APP_API_URL;
-  const [myReservationInfo, setMyReservationInfo] = useState(null);
+  const [myReservationInfo, setMyReservationInfo] = useState({
+    seatNumber: 7,
+    startTime: '2023-11-14T13:41:23.521Z',
+  });
 
   useEffect(() => {
     axios
@@ -20,15 +23,14 @@ export default function MyReservation() {
   }, []);
 
   const returnSeat = () => {
-      axios
-        .patch(url + 'seat/return')
-        .then((res) => {
-          console.log("좌석반납완료")
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    axios
+      .patch(url + 'seat/return')
+      .then((res) => {
+        console.log('좌석반납완료');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   if (!myReservationInfo.seatNumber) {
@@ -45,6 +47,7 @@ export default function MyReservation() {
                   <StrokeSquareBtn
                     size="middle"
                     club="wink"
+                    onClick={returnSeat}
                     url={
                       process.env.PUBLIC_URL + '/Images/All/winkSeatIcon.svg'
                     }
@@ -62,3 +65,4 @@ export default function MyReservation() {
       </>
     );
   }
+}
