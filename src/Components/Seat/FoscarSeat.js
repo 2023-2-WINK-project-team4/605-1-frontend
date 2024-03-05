@@ -6,15 +6,15 @@ import axios from 'axios';
 export default function FoscarSeat(props) {
   const [mySeatData, setMySeatData] = useState([]);
   const club = 'foscar';
+  const token = sessionStorage.getItem('token');
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/seat/${club}`)
+      .get(`${process.env.REACT_APP_API_URL}/seat/${club}`, { token })
       .then((res) => {
         console.log('res : ', res);
         setMySeatData(res);
       })
       .catch((error) => {
-        console.log('gmlgml');
         console.log(error);
       });
   }, []);
@@ -143,10 +143,10 @@ export default function FoscarSeat(props) {
                               />
                             </>
                           )}
-                          {mySeatData[item.number - 1].seatStatus ===
+                          {mySeatData[item.number - 1]?.seatStatus ===
                           'using' ? (
                             <style.ProfilePic
-                              src={mySeatData[item.number - 1].userProfileUrl}
+                              src={mySeatData[item.number - 1]?.userProfileUrl}
                               alt="profile pic"
                             />
                           ) : null}
@@ -193,16 +193,15 @@ export default function FoscarSeat(props) {
                               }
                               alt="Monitor Icon"
                             />
-                            {mySeatData[item.number - 1].seatStatus ===
-                            'using' ? (
-                              <style.ProfilePic
-                                src={mySeatData[item.number - 1].userProfileUrl}
-                                alt="profile pic"
-                              />
-                            ) : null}
                           </>
                           /// 여기까지
                         )}
+                        {mySeatData[item.number - 1]?.seatStatus === 'using' ? (
+                          <style.ProfilePic
+                            src={mySeatData[item.number - 1]?.userProfileUrl}
+                            alt="profile pic"
+                          />
+                        ) : null}
                       </style.UseableSeat>
                     </div>
                   }

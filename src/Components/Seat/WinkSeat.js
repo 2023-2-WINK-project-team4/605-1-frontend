@@ -7,16 +7,16 @@ import { isStatement } from '@babel/types';
 export default function WinkSeat(props) {
   const [mySeatData, setMySeatData] = useState([]);
   const club = 'wink';
+  const token = sessionStorage.getItem('token');
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/seat/${club}`)
+      .get(`${process.env.REACT_APP_API_URL}/seat/${club}`, { token })
       .then((res) => {
         console.log('res : ', res);
         setMySeatData(res);
         // const MySeatData = SetMySeatData(res);
       })
       .catch((error) => {
-        console.log('gmlgml');
         console.log(error);
       });
   }, []);
@@ -137,7 +137,6 @@ export default function WinkSeat(props) {
                       <div>
                         <style.UseableSeat club={club} key={item.number}>
                           <span>{item.number}</span>
-                          {item.monitor}
                           {item.monitor === 'true' && (
                             <>
                               <style.Icon
@@ -149,10 +148,10 @@ export default function WinkSeat(props) {
                               />
                             </>
                           )}
-                          {mySeatData[item.number - 1].seatStatus ===
+                          {mySeatData[item.number - 1]?.seatStatus ===
                           'using' ? (
                             <style.ProfilePic
-                              src={mySeatData[item.number - 1].userProfileUrl}
+                              src={mySeatData[item.number - 1]?.userProfileUrl}
                               alt="profile pic"
                             />
                           ) : null}
@@ -200,16 +199,15 @@ export default function WinkSeat(props) {
                               }
                               alt="Monitor Icon"
                             />
-                            {/* {mySeatData[item.number - 1].seatStatus ===
-                            'using' ? (
-                              <style.ProfilePic
-                                src={mySeatData[item.number - 1].userProfileUrl}
-                                alt="profile pic"
-                              />
-                            ) : null} */}
                           </>
                           /// 여기까지
                         )}
+                        {mySeatData[item.number - 1]?.seatStatus === 'using' ? (
+                          <style.ProfilePic
+                            src={mySeatData[item.number - 1]?.userProfileUrl}
+                            alt="profile pic"
+                          />
+                        ) : null}
                       </style.UseableSeat>
                     </div>
                   }

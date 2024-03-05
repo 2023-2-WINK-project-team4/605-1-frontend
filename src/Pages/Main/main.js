@@ -40,7 +40,7 @@ export default function Main(props) {
               size={'big'}
               url={process.env.PUBLIC_URL + '/Images/All/winkTableIcon.svg'}
               onClick={() => {
-                navigate('./meetingTable', { state: { club } });
+                navigate('/meetingTable', { state: { club } });
               }}
             />
             <FullSquareBtn
@@ -48,7 +48,7 @@ export default function Main(props) {
               size={'big'}
               url={process.env.PUBLIC_URL + '/Images/All/whiteSeatIcon.svg'}
               onClick={() => {
-                navigate('./regularSeat', { state: { club } });
+                navigate('/regularSeat', { state: { club } });
               }}
             />
           </style.ButtonContainer>
