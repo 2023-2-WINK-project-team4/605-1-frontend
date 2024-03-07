@@ -35,6 +35,7 @@ export default function Profile() {
 
       if (res.data.msg === '회원 가입 성공') {
         sessionStorage.setItem('token', res.data.token);
+        sessionStorage.setItem('club', club);
         navigate('/main', { state: { club: club } });
       } else {
         alert('회원 가입 실패');
