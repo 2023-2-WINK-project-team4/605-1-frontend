@@ -6,18 +6,37 @@ import { useLocation } from 'react-router-dom';
 import Input from '../../Components/Input/input';
 import FullBtn from '../../Components/Button/fullBtn';
 import Dropdown from '../../Components/Dropdown/dropdown';
+import axios from 'axios';
 
 export default function ProfileEdit() {
   const title = '프로필 수정';
   const location = useLocation();
-  const userInfo = location.state.userInfo;
+  const userInfo = location.state.userInfo; //나중에 props를 사용하게끔 바꿔야할지도
+  const url = process.env.REACT_APP_API_URL;
 
+  const [realClub, setRealClub] = useState(userInfo.club);
+  const [tempClub, setTempClub] = useState(realClub);
   const [realImage, setRealImage] = useState(userInfo.profile);
   const [tempImage, setTempImage] = useState(realImage);
   const [realName, setRealName] = useState(userInfo.name);
   const [tempName, setTempName] = useState(realName);
   const [realStudentId, setRealStudentId] = useState(userInfo.studentId);
   const [tempStudentId, setTempStudentId] = useState(realStudentId);
+  const patchUserInfo = () => {
+    axios
+      .patch(url + '/user/update', {
+        name: realName,
+        studentID: realStudentId,
+        club: realClub,
+        profile: realImage,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const handleImageChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -67,6 +86,13 @@ export default function ProfileEdit() {
             content={'소속'}
             width={'202px'}
             height={'29px'}
+            onChange={() =>
+              setTempName(
+                tempClub == 'wink'
+                  ? setTempClub('foscar')
+                  : setTempClub('wink'),
+              )
+            }
           />
           <Input
             content={'학번'}
@@ -85,6 +111,7 @@ export default function ProfileEdit() {
             setRealImage(tempImage);
             setRealName(tempName);
             setRealStudentId(tempStudentId);
+            setRealClub(tempClub);
           }}
         />
       </style.ProfileEditContainer>
