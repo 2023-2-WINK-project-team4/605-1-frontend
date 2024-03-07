@@ -16,13 +16,13 @@ export default function Main(props) {
   const club = sessionStorage.getItem('club');
   const token = sessionStorage.getItem('token');
   const [seatInfo, setSeatInfo] = useState({});
-  console.log(club);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/seat/my-seat`, { token })
+      .get(`${process.env.REACT_APP_API_URL}/seat/my-seat`, {
+        headers: { Authorization: `${token}` },
+      })
       .then((res) => {
         setSeatInfo(res);
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
