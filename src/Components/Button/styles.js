@@ -24,11 +24,9 @@ export const BigFullButton = styled.button`
 `;
 
 export const StrokeButton = styled.button`
-  width: 48px;
-  height: 26px;
   color: ${(props) => props.theme.color}; // theme
   background: white;
-  border: 3px solid;
+  border: 2px solid;
   border-color: ${(props) => props.theme.color}; // theme
   border-radius: 10px;
   cursor: pointer;

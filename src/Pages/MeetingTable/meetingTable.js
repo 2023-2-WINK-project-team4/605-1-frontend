@@ -14,6 +14,16 @@ export default function MeetingTable(props) {
   const [selectedDate, setSelectedDate] = useState(null);
   const handleDate = (date) => {
     setSelectedDate(date);
+    setCalendarOpen(false);
+  };
+
+  const [calendarOpen, setCalendarOpen] = useState(false);
+  const handleOpen = () => {
+    setCalendarOpen(true);
+  };
+
+  const handleClose = () => {
+    setCalendarOpen(false);
   };
 
   const tableHeaders = ['사용 동아리', '대표자', '사용 시간'];
@@ -25,12 +35,17 @@ export default function MeetingTable(props) {
 
   const DatePickerInput = React.forwardRef(({ value, onClick }, ref) => (
     <style.CustomDatePicker>
-      <span style={{ marginRight: 'auto' }}>{value}</span>
+      <span style={{ marginRight: 'auto' }}>{value ? value : '날짜'}</span>
       <img
-        src={process.env.PUBLIC_URL + '/Images/Dropdown/downArrow.svg'}
+        src={
+          calendarOpen
+            ? process.env.PUBLIC_URL + '/Images/Dropdown/upArrow.svg'
+            : process.env.PUBLIC_URL + '/Images/Dropdown/downArrow.svg'
+        }
         alt="캘린더 드롭다운"
         ref={ref}
         onClick={onClick}
+        style={{ marginTop: '3px' }}
       />
     </style.CustomDatePicker>
   ));
@@ -55,10 +70,11 @@ export default function MeetingTable(props) {
             <DatePicker
               selected={selectedDate}
               onChange={handleDate}
+              onCalendarOpen={handleOpen}
+              onCalendarClose={handleClose}
               dateFormat="yyyy. MM. dd"
               showOn="button"
               minDate={new Date()}
-              placeholderText="날짜 선택"
               onFocus={(e) => (e.target.readOnly = true)}
               locale={ko}
               customInput={<DatePickerInput />}
