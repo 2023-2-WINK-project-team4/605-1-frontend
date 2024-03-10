@@ -16,3 +16,11 @@ export const Input = styled.input`
   border-radius: 8px;
   padding: 7px 10px;
 `;
+
+export const Textarea = styled.textarea`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 7px 10px;
+`;
