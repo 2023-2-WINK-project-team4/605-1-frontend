@@ -6,15 +6,30 @@ export default function Input(props) {
     <>
       {props.isModal ? (
         <style.Container>
-          <style.Input
-            width={props.width}
-            height={props.height}
-            onClick={props.onClick}
-            placeholder={props.placeholder}
-            onChange={props.onChange}
-            value={props.value}
-            onKeyDown={props.onKeyDown ? (e) => props.onKeyDown(e) : undefined}
-          />
+          {props.isArea ? (
+            <style.Textarea
+              width={props.width}
+              height={props.height}
+              name={props.name}
+              type={props.type || 'text'}
+              placeholder={props.contentPlaceholder}
+              onChange={props.onChange}
+              onClick={props.onClick}
+              value={props.value}
+            />
+          ) : (
+            <style.Input
+              width={props.width}
+              height={props.height}
+              onClick={props.onClick}
+              placeholder={props.placeholder}
+              onChange={props.onChange}
+              value={props.value}
+              onKeyDown={
+                props.onKeyDown ? (e) => props.onKeyDown(e) : undefined
+              }
+            />
+          )}
         </style.Container>
       ) : (
         <style.Container>
