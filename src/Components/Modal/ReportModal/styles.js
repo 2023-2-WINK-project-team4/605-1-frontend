@@ -63,5 +63,42 @@ export const ModalFooter = styled.div`
 `;
 
 export const DatePickerContainer = styled.div`
-  width: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+`;
+
+export const DateTimeTitle = styled.span`
+  font-weight: 700;
+`;
+
+export const DateItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const TimeItem = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TimeBlock = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const CustomDatePicker = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 10px 2px;
+  width: 128px;
+  height: 28px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
 `;
