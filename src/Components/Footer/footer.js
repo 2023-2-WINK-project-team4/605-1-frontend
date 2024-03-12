@@ -11,7 +11,7 @@ export default function Footer(props) {
         {props.title !== '메인' ? (
           <img
             src={process.env.PUBLIC_URL + '/Images/Footer/mainIcon.svg'}
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/main')}
           />
         ) : (
           <img
