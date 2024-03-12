@@ -22,9 +22,7 @@ export default function Main() {
       })
       .then((res) => {
         sessionStorage.setItem('club', res.data.member.club);
-        console.log(sessionStorage.getItem('club'));
         setSeatInfo(res.data.seatNumber);
-        console.log(seatInfo);
       })
       .catch((error) => {
         console.log(error);
