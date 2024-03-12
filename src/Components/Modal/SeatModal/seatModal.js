@@ -1,160 +1,127 @@
+import React, { useEffect, useState } from 'react';
 import * as style from './styles';
 import FullBtn from '../../Button/fullBtn';
-import React, { useEffect, useState } from 'react';
+import StrokeBtn from '../../Button/strokeBtn';
+import Modal from 'react-modal';
 import { themeWink, themeFoscar } from '../../Theme/theme';
 import axios from 'axios';
 
 export default function SeatModal(props) {
-  const url = process.env.REACT_APP_API_URL;
-  const [clubSeat, setClubseat] = useState(null);
-  useEffect(() => {
-    //useEffect 파트안에서 axious파트 주석처리하면됨
-    setClubseat([
-      {
-        seatNumber: 1,
-        seatStatus: 'using',
-        studentId: 20213100,
-        userName: '홍승현',
-        userProfileUrl:
-          'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
-        startTime: '2023-11-14T13:41:23.521Z',
-      },
-      {
-        seatNumber: 2,
-        seatStatus: 'using',
-        studentId: 20201111,
-        userName: '류건',
-        userProfileUrl:
-          'https://t3.ftcdn.net/jpg/04/73/67/64/240_F_473676400_VyH1ey15WGBA6L9MILjha6thtMVfuRh2.jpg',
-        startTime: '2023-11-14T12:41:23.521Z',
-      },
-      {
-        seatNumber: 3,
-        seatStatus: 'notUsed',
-        studentId: null,
-        userName: null,
-        userProfileUrl: null,
-        startTime: null,
-      },
-      {
-        seatNumber: 4,
-        seatStatus: 'notUsed',
-        studentId: null,
-        userName: null,
-        userProfileUrl: null,
-        startTime: null,
-      },
-      {
-        seatNumber: 5,
-        seatStatus: 'notUsed',
-        studentId: null,
-        userName: null,
-        userProfileUrl: null,
-        startTime: null,
-      },
-      {
-        seatNumber: 6,
-        seatStatus: 'notUsed',
-        studentId: null,
-        userName: null,
-        userProfileUrl: null,
-        startTime: null,
-      },
-      {
-        seatNumber: 7,
-        seatStatus: 'notUsed',
-        studentId: null,
-        userName: null,
-        userProfileUrl: null,
-        startTime: null,
-      },
+  const [isButtonOpen, setIsButtonOpen] = useState(true);
+  const [seatInfo, setSeatInfo] = useState('');
+  const club = sessionStorage.getItem('club');
+  const token = sessionStorage.getItem('token');
 
-      {
-        seatNumber: 8,
-        seatStatus: 'notUsed',
-        studentId: null,
-        userName: null,
-        userProfileUrl: null,
-        startTime: null,
-      },
-    ]);
-    axios
-      .get(url + `seat/${props.club}`)
+  const getSeat = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/seat/my-seat`, {
+        headers: { Authorization: `${token}` },
+      })
       .then((res) => {
-        setClubseat(
-          res.data.filter((data) => {
-            return data.seatNumber == props.tryToSeat; // === 사용해야될지도
-          }),
-        );
+        setSeatInfo(res.data.seatNumber);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isButtonOpen, setIsButtonOpen] = useState(true);
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const patchSeatReturn = async () => {
+    await axios
+      .patch(`${process.env.REACT_APP_API_URL}/seat/return`, null, {
+        headers: { Authorization: `${token}` },
+      })
+      .then((res) => {
+        props.setUpdateFlag(true);
+        alert('반납이 완료되었습니다 !');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  const handleClick = () => {
-    handleCloseModal();
-    props.onClick();
+  const patchSeatRent = async () => {
+    await axios
+      .patch(
+        `${process.env.REACT_APP_API_URL}/seat/rent`,
+        { seatNumber: props.mySeatInfo },
+        {
+          headers: { Authorization: `${token}` },
+        },
+      )
+      .then((res) => {
+        props.setUpdateFlag(true);
+        alert('배정이 완료되었습니다 !');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  const handleCloseBtn = () => {
+    props.setModalOpen(false);
+  };
+
+  const handleConfirmBtn = () => {
+    if (props.mySeatInfo == seatInfo) {
+      patchSeatReturn();
+    } else {
+      patchSeatRent();
+    }
+
+    props.setModalOpen(false);
+  };
+  useEffect(() => {
+    getSeat();
+  }, [seatInfo, props.updateFlag]);
+
   return (
-    <div>
-      <div onClick={handleOpenModal}>{props.children}</div>
-      {isModalOpen && (
-        <style.ModalWrapper>
-          <style.ModalContainer onClick={handleCloseModal} />
-          <style.ModalContent
-            theme={props.club === 'wink' ? themeWink : themeFoscar}
-          >
-            <style.ModalCloseButton onClick={handleCloseModal}>
-              X
-            </style.ModalCloseButton>
+    <>
+      <Modal
+        isOpen={props.modalOpen}
+        onRequestClose={() => props.setModalOpen(false)}
+        style={style.customModalStyles}
+        ariaHideApp={false}
+        contentLabel="seat modal"
+        shouldCloseOnOverlayClick={false}
+      >
+        <style.ModalHeader>
+          <style.CloseButton
+            src={process.env.PUBLIC_URL + '/Images/All/closeIcon.svg'}
+            onClick={() => handleCloseBtn()}
+          />
+        </style.ModalHeader>
+        <style.ModalContent>
+          {props.mySeatInfo == seatInfo ? (
+            <style.SeatText>
+              {props.mySeatInfo}번 좌석을 반납하시겠습니까?
+            </style.SeatText>
+          ) : props.clubSeatInfo === 'using' ? (
             <div>
-              {props.myReservationInfo.seatNumber !== null ? (
-                <p>
-                  {props.myReservationInfo.seatNumber}번 좌석을
-                  반납하시겠습니까?
-                </p>
-              ) : clubSeat.studentId != null ? (
-                <div>
-                  {() => {
-                    setIsButtonOpen(false);
-                    return <p>이미 사용중인 좌석입니다</p>;
-                  }}
-                </div>
-              ) : (
-                <p>{props.tryToSeat}번 좌석을 배정하시겠습니까?</p>
-              )}
+              {() => {
+                setIsButtonOpen(false);
+                return (
+                  <style.SeatText>이미 사용 중인 좌석입니다.</style.SeatText>
+                );
+              }}
             </div>
-            <div>
-              {isButtonOpen ? (
-                <style.ButtonBox>
-                  <FullBtn
-                    size="small"
-                    name="확인"
-                    club={props.club}
-                    onClick={handleClick}
-                  />
-                  <FullBtn
-                    size="small"
-                    name="취소"
-                    club={props.club}
-                    onClick={handleCloseModal}
-                  />
-                </style.ButtonBox>
-              ) : null}
-            </div>
-          </style.ModalContent>
-        </style.ModalWrapper>
-      )}
-    </div>
+          ) : (
+            <style.SeatText>
+              {props.mySeatInfo}번 좌석을 배정하시겠습니까?
+            </style.SeatText>
+          )}
+        </style.ModalContent>
+        {isButtonOpen && (
+          <style.ModalFooter>
+            <FullBtn
+              size="small"
+              name="확인"
+              club={club}
+              onClick={() => handleConfirmBtn()}
+            />
+            <StrokeBtn name="취소" club={club} onClick={handleCloseBtn} />
+          </style.ModalFooter>
+        )}
+      </Modal>
+    </>
   );
 }

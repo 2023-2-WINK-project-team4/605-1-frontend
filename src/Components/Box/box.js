@@ -7,6 +7,7 @@ export default function Box(props) {
       width={props.width}
       height={props.height}
       borderColor={props.borderColor}
+      onClick={props.onClick}
     >
       {props.pageName === 'profile' ? (
         <>
