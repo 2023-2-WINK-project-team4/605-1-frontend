@@ -5,7 +5,7 @@ import LoginCallBack from './Pages/Login/loginCallback';
 import Profile from './Pages/Profile/profile';
 import Main from './Pages/Main/main';
 import MeetingTable from './Pages/MeetingTable/meetingTable';
-import RegularSeat from './Pages/RegularSeat/regularseat';
+import RegularSeat from './Pages/RegularSeat/Regularseat';
 import Setting from './Pages/Setting/setting';
 import ProfileEdit from './Pages/ProfileEdit/profileEdit';
 
