@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from '../../Components/Header/header';
 import Footer from '../../Components/Footer/footer';
 import * as style from './styles';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Input from '../../Components/Input/input';
 import FullBtn from '../../Components/Button/fullBtn';
 import Dropdown from '../../Components/Dropdown/dropdown';
@@ -10,43 +10,60 @@ import axios from 'axios';
 
 export default function ProfileEdit() {
   const title = '프로필 수정';
-  const location = useLocation();
-  const userInfo = location.state.userInfo; //나중에 props를 사용하게끔 바꿔야할지도
-  const url = process.env.REACT_APP_API_URL;
 
-  const [realClub, setRealClub] = useState(userInfo.club);
-  const [tempClub, setTempClub] = useState(realClub);
-  const [realImage, setRealImage] = useState(userInfo.profile);
-  const [tempImage, setTempImage] = useState(realImage);
-  const [realName, setRealName] = useState(userInfo.name);
-  const [tempName, setTempName] = useState(realName);
-  const [realStudentId, setRealStudentId] = useState(userInfo.studentId);
-  const [tempStudentId, setTempStudentId] = useState(realStudentId);
-  const patchUserInfo = () => {
-    axios
-      .patch(url + '/user/update', {
-        name: realName,
-        studentID: realStudentId,
-        club: realClub,
-        profile: realImage,
+  const navigate = useNavigate();
+  const location = useLocation();
+  const userInfo = location.state.userInfo;
+
+  const token = sessionStorage.getItem('token');
+
+  const [name, setName] = useState(userInfo.name);
+  const [club, setClub] = useState(userInfo.club);
+  const [studentId, setStudentId] = useState(userInfo.studentId);
+  const [profile, setProfile] = useState(userInfo.profile);
+
+  const imageInputRef = useRef('');
+
+  const patchUser = async (formData) => {
+    await axios
+      .patch(`${process.env.REACT_APP_API_URL}/user/update`, formData, {
+        headers: { Authorization: `${token}` },
       })
-      .then(function (response) {
-        console.log(response);
+      .then((res) => {
+        navigate('/setting');
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   };
 
-  const handleImageChange = (e) => {
-    const selectedFile = e.target.files[0];
+  const handleProfileChange = (e) => {
+    let reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    reader.onloadend = () => {
+      const previewImgUrl = reader.result;
+      if (previewImgUrl) {
+        setProfile(previewImgUrl);
+      }
+    };
+  };
 
-    if (selectedFile) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setTempImage(reader.result);
-      };
-      reader.readAsDataURL(selectedFile);
+  const createItem = async () => {
+    const formData = new FormData();
+
+    formData.append('name', name);
+    formData.append('studentID', studentId);
+    formData.append('club', club);
+
+    if (imageInputRef.current && imageInputRef.current.files[0]) {
+      formData.append('profile', imageInputRef.current.files[0]);
+    }
+    try {
+      await patchUser(formData);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -55,7 +72,14 @@ export default function ProfileEdit() {
       <Header title={title} />
       <style.ProfileEditContainer>
         <style.UserProfile>
-          <img src={tempImage} alt="프로필 사진" />
+          {profile ? (
+            <img src={profile} alt="프로필 사진" />
+          ) : (
+            <img
+              src={process.env.PUBLIC_URL + '/Images/Setting/profile.svg'}
+              alt="프로필 사진"
+            />
+          )}
           <style.EditButton>
             <style.EditLabel htmlFor="imageUpload">
               <img
@@ -67,7 +91,8 @@ export default function ProfileEdit() {
               id="imageUpload"
               type="file"
               accept="image/*"
-              onChange={handleImageChange}
+              ref={imageInputRef}
+              onChange={handleProfileChange}
             />
           </style.EditButton>
         </style.UserProfile>
@@ -77,8 +102,8 @@ export default function ProfileEdit() {
             type={'text'}
             width={'180px'}
             height={'15px'}
-            placeholder={realName}
-            onChange={(value) => setTempName(value)}
+            placeholder={userInfo.name}
+            onChange={(e) => setName(e.target.value)}
           />
           <Dropdown
             gap={'29px'}
@@ -86,33 +111,22 @@ export default function ProfileEdit() {
             content={'소속'}
             width={'202px'}
             height={'29px'}
-            onChange={() =>
-              setTempName(
-                tempClub == 'wink'
-                  ? setTempClub('foscar')
-                  : setTempClub('wink'),
-              )
-            }
+            onChange={(value) => setClub(value)}
           />
           <Input
             content={'학번'}
             type={'text'}
             width={'180px'}
             height={'15px'}
-            placeholder={realStudentId}
-            onChange={(value) => setTempStudentId(value)}
+            placeholder={userInfo.studentId}
+            onChange={(e) => setStudentId(e.target.value)}
           />
         </style.InputWrapper>
         <FullBtn
           size="big"
           club={userInfo.club}
           name="확인"
-          onClick={() => {
-            setRealImage(tempImage);
-            setRealName(tempName);
-            setRealStudentId(tempStudentId);
-            setRealClub(tempClub);
-          }}
+          onClick={createItem}
         />
       </style.ProfileEditContainer>
       <Footer title={title} />

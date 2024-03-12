@@ -38,7 +38,7 @@ export const UserInfo = styled.div`
   font-size: 16px;
   :first-child {
     font-size: 16px;
-    font-weight: 800;
+    font-weight: 700;
     margin-right: 10px;
   }
 `;
