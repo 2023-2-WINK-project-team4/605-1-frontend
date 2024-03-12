@@ -1,13 +1,13 @@
-import Login from './Pages/Login/login';
-import Profile from './Pages/Profile/profile';
-import ProfileEdit from './Pages/ProfileEdit/profileEdit';
-import Setting from './Pages/Setting/setting';
-import Main from './Pages/Main/main';
-import MeetingTable from './Pages/MeetingTable/meetingTable';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './Pages/Login/login';
 import LoginCallBack from './Pages/Login/loginCallback';
-import RegularSeat from './Pages/RegularSeat/regularSeat';
+import Profile from './Pages/Profile/profile';
+import Main from './Pages/Main/main';
+import MeetingTable from './Pages/MeetingTable/meetingTable';
+import RegularSeat from './Pages/RegularSeat/regularseat';
+import Setting from './Pages/Setting/setting';
+import ProfileEdit from './Pages/ProfileEdit/profileEdit';
 
 export default function App() {
   return (
