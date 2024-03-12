@@ -35,7 +35,6 @@ export default function ReportModal(props) {
         { headers: { Authorization: `${token}` } },
       )
       .then((res) => {
-        console.log(res);
         alert('신고가 완료되었습니다 !');
       })
       .catch((error) => {
