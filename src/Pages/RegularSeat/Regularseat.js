@@ -5,12 +5,9 @@ import Footer from '../../Components/Footer/footer';
 import * as style from './styles';
 import WinkSeat from '../../Components/Seat/winkSeat';
 import FoscarSeat from '../../Components/Seat/foscarSeat';
-import { useLocation } from 'react-router-dom';
 
-export default function RegularSeat(props) {
-  const location = useLocation();
-  // const club = location.state.club;
-  const club = 'wink';
+export default function RegularSeat() {
+  const club = sessionStorage.getItem('club');
 
   return (
     <>

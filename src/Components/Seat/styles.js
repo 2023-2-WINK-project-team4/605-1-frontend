@@ -21,6 +21,8 @@ export const SeatContainer = styled.div`
 `;
 
 export const UseableSeat = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 64px;
   height: 64px;
   background: #ffffff;
@@ -30,10 +32,12 @@ export const UseableSeat = styled.div`
   span {
     margin-left: 1px;
   }
-  /* img {
-    margin-left: 5px;
-  } */
 `;
+
+export const SeatHeader = styled.div`
+  display: flex;
+`;
+
 export const Icon = styled.img`
   margin-left: 5px;
 `;
@@ -47,11 +51,9 @@ export const BannedSeat = styled.div`
 `;
 
 export const ProfilePic = styled.img`
-  width: 45px;
-  height: 45px;
+  display: flex;
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  margin-top: -6px;
-  margin-left: 16px;
-  margin-right: -5px;
-  margin-bottom: -5px;
 `;
