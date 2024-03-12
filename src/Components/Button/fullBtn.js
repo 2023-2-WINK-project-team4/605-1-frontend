@@ -5,7 +5,7 @@ import { themeWink, themeFoscar } from '../Theme/theme';
 
 export default function FullBtn(props) {
   return (
-    <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
+    <ThemeProvider theme={props.club === 'foscar' ? themeFoscar : themeWink}>
       {props.size === 'small' ? (
         <SmallFullButton onClick={props.onClick}>{props.name}</SmallFullButton>
       ) : (
