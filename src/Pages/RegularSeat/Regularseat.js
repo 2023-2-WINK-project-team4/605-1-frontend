@@ -3,8 +3,8 @@ import TitleBox from '../../Components/Box/titleBox';
 import Header from '../../Components/Header/header';
 import Footer from '../../Components/Footer/footer';
 import * as style from './styles';
-import WinkSeat from '../../Components/Seat/winkSeat';
-import FoscarSeat from '../../Components/Seat/foscarSeat';
+import WinkSeat from '../../Components/Seat/WinkSeat';
+import FoscarSeat from '../../Components/Seat/FoscarSeat';
 
 export default function RegularSeat() {
   const club = sessionStorage.getItem('club');

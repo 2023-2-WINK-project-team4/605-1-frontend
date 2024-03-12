@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as style from './styles';
+import ReportModal from '../Modal/ReportModal/reportModal';
 
 export default function Header(props) {
   const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <style.Header>
@@ -20,9 +22,10 @@ export default function Header(props) {
         </style.ButtonBlock>
       ) : props.title === '일반 좌석 배정' ? (
         <style.ButtonBlock>
-          <button onClick={() => props.onClick()}>
+          <button onClick={() => setModalOpen(!modalOpen)}>
             <span>신고하기</span>
           </button>
+          <ReportModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </style.ButtonBlock>
       ) : null}
     </style.Header>

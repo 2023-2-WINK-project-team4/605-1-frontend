@@ -4,29 +4,50 @@ import FullBtn from '../../Button/fullBtn';
 import StrokeBtn from '../../Button/strokeBtn';
 import Input from '../../Input/input';
 import * as style from './styles';
+import axios from 'axios';
 
 export default function ReportModal(props) {
   const [isOpen, setIsOpen] = useState(true);
   const [name, setName] = useState('');
   const [seatNum, setSeatNum] = useState('');
   const [reason, setReason] = useState('');
-  const [club, setClub] = useState('');
-  const [reps, setReps] = useState('');
 
-  const handleCloseBtn = () => {
-    setIsOpen(false);
-  };
+  const token = sessionStorage.getItem('token');
 
   const handleConfirmBtn = () => {
-    setIsOpen(false);
+    postReport();
+    props.setModalOpen(false);
+  };
+
+  const handleCloseBtn = () => {
+    props.setModalOpen(false);
+  };
+
+  const postReport = async () => {
+    await axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/report`,
+        {
+          name: name,
+          seatNumber: seatNum,
+          comment: reason,
+        },
+        { headers: { Authorization: `${token}` } },
+      )
+      .then((res) => {
+        console.log(res);
+        alert('신고가 완료되었습니다 !');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <>
       <Modal
-        pageName={props.pageName}
-        isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
+        isOpen={props.modalOpen}
+        onRequestClose={() => props.setModalOpen(false)}
         style={style.customModalStyles}
         ariaHideApp={false}
         contentLabel="report modal"
@@ -71,7 +92,7 @@ export default function ReportModal(props) {
             />
           </style.ModalItem>
         </style.ModalContent>
-        <style.ModalFooter pageName={props.pageName}>
+        <style.ModalFooter>
           <FullBtn
             size="small"
             name="확인"
