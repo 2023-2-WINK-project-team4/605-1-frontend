@@ -11,7 +11,7 @@ import { themeWink, themeFoscar } from '../Theme/theme';
 
 export default function StrokeSquareBtn(props) {
   return (
-    <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
+    <ThemeProvider theme={props.club === 'foscar' ? themeFoscar : themeWink}>
       {props.size === 'small' ? (
         <SmallStrokeSquareButton onClick={props.onClick}>
           <ImageForSquare src={props.url} />
