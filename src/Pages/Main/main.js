@@ -4,11 +4,35 @@ import Box from '../../Components/Box/box';
 import Footer from '../../Components/Footer/footer';
 import TitleBox from '../../Components/Box/titleBox';
 import * as style from './styles';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-export default function Main(props) {
+export default function Main() {
   const navigate = useNavigate();
-  const club = 'wink';
+
+  const token = sessionStorage.getItem('token');
+
+  const [seatInfo, setSeatInfo] = useState('');
+
+  const getUser = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/user/update`, {
+        headers: { Authorization: `${token}` },
+      })
+      .then((res) => {
+        sessionStorage.setItem('club', res.data.member.club);
+        setSeatInfo(res.data.seatNumber);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <>
       <style.MainContainer>
@@ -31,7 +55,11 @@ export default function Main(props) {
               borderColor={'#3A70FF'}
               pageName={'main'}
               src={process.env.PUBLIC_URL + '/Images/All/winkSeatIcon.svg'}
-              content={'내 좌석 예약 현황'}
+              content={
+                seatInfo
+                  ? seatInfo + '번 좌석 사용 중'
+                  : '이용 중인 좌석이 없습니다.'
+              }
             />
           </style.ReservationContainer>
           <style.ButtonContainer>
@@ -40,7 +68,7 @@ export default function Main(props) {
               size={'big'}
               url={process.env.PUBLIC_URL + '/Images/All/winkTableIcon.svg'}
               onClick={() => {
-                navigate('/meetingTable', { state: { club } });
+                navigate('/meetingTable');
               }}
             />
             <FullSquareBtn
@@ -48,7 +76,7 @@ export default function Main(props) {
               size={'big'}
               url={process.env.PUBLIC_URL + '/Images/All/whiteSeatIcon.svg'}
               onClick={() => {
-                navigate('/regularSeat', { state: { club } });
+                navigate('/regularSeat');
               }}
             />
           </style.ButtonContainer>
