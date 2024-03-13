@@ -56,7 +56,6 @@ export default function MeetingTable(props) {
         headers: { Authorization: `${token}` },
       })
       .then((res) => {
-        console.log(res.data);
         setTableInfo(res.data);
       })
       .catch((error) => {
