@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../Components/Header/header';
 import DatePicker from 'react-datepicker';
 import { ThemeProvider } from 'styled-components';
@@ -7,9 +7,13 @@ import { GlobalStyle } from './styles';
 import Footer from '../../Components/Footer/footer';
 import * as style from './styles';
 import ko from 'date-fns/locale/ko';
+import axios from 'axios';
 
 export default function MeetingTable(props) {
   const title = '회의 테이블 배정';
+  const [tableInfo, setTableInfo] = useState({});
+
+  const token = sessionStorage.getItem('token');
 
   const [selectedDate, setSelectedDate] = useState(null);
   const handleDate = (date) => {
@@ -17,6 +21,7 @@ export default function MeetingTable(props) {
     setCalendarOpen(false);
   };
 
+  console.log(selectedDate);
   const [calendarOpen, setCalendarOpen] = useState(false);
   const handleOpen = () => {
     setCalendarOpen(true);
@@ -27,11 +32,6 @@ export default function MeetingTable(props) {
   };
 
   const tableHeaders = ['사용 동아리', '대표자', '사용 시간'];
-  const reservationData = [
-    ['WINK', '박정명', '19:00 ~ 20:00'],
-    ['WINK', '박정명', '12:00 ~ 18:00'],
-    ['WINK', '박정명', '17:00 ~ 23:00'],
-  ];
 
   const DatePickerInput = React.forwardRef(({ value, onClick }, ref) => (
     <style.CustomDatePicker>
@@ -50,6 +50,24 @@ export default function MeetingTable(props) {
     </style.CustomDatePicker>
   ));
 
+  const getTableInfo = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/table/${selectedDate}`, {
+        headers: { Authorization: `${token}` },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setTableInfo(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getTableInfo();
+  }, [selectedDate]);
+
   return (
     <ThemeProvider theme={props.club === 'wink' ? themeWink : themeFoscar}>
       <GlobalStyle />
@@ -65,20 +83,20 @@ export default function MeetingTable(props) {
             alt="윙크 로고"
           />
         </style.Icon>
-        {reservationData.length > 0 ? (
+        <DatePicker
+          selected={selectedDate}
+          onChange={handleDate}
+          onCalendarOpen={handleOpen}
+          onCalendarClose={handleClose}
+          dateFormat="yyyy. MM. dd"
+          showOn="button"
+          minDate={new Date()}
+          onFocus={(e) => (e.target.readOnly = true)}
+          locale={ko}
+          customInput={<DatePickerInput />}
+        />
+        {tableInfo.length > 0 ? (
           <>
-            <DatePicker
-              selected={selectedDate}
-              onChange={handleDate}
-              onCalendarOpen={handleOpen}
-              onCalendarClose={handleClose}
-              dateFormat="yyyy. MM. dd"
-              showOn="button"
-              minDate={new Date()}
-              onFocus={(e) => (e.target.readOnly = true)}
-              locale={ko}
-              customInput={<DatePickerInput />}
-            />
             <style.TableWrapper>
               <style.Table>
                 <thead>
@@ -89,11 +107,16 @@ export default function MeetingTable(props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {reservationData.map((rowData, rowIndex) => (
+                  {tableInfo.map((item, rowIndex) => (
                     <tr key={rowIndex}>
-                      {rowData.map((data, colIndex) => (
-                        <td key={colIndex}>{data}</td>
-                      ))}
+                      <td key={0}>
+                        {item.club === 'wink' ? 'WINK' : 'FOSCAR'}
+                      </td>
+                      <td key={1}>{item.member}</td>
+                      <td key={2}>
+                        {item.startTime.toString().substr(11, 5)} ~{' '}
+                        {item.endTime.toString().substr(11, 5)}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
